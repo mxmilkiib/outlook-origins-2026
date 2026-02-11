@@ -44,6 +44,8 @@
             --bg: #fff; --card: #eee; --card-hover: #e5e5e5; --text: #000;
             --text-dim: #555; --accent: #000; --border: #ccc; --link-bg: #e5e5e5; --link-hover: #000; --link-hover-text: #fff;
         }
+        [data-theme="wb"] .control-group input[type="radio"]:checked + label { color: #fff; }
+        [data-theme="bw"] .genre-tag, [data-theme="wb"] .genre-tag { background: var(--text-dim) !important; color: var(--bg); }
         [data-theme="pastel-light"] {
             --bg: #f8f0f4; --card: #fff; --card-hover: #f5eef2; --text: #3a2a3a;
             --text-dim: #8a6a7a; --accent: #b06090; --border: #e0d0d8; --link-bg: #f0e4ec; --link-hover: #b06090; --link-hover-text: #fff;
@@ -158,7 +160,7 @@
         .act-card .act-field { font-size: 0.7rem; color: var(--text-dim); line-height: 1.5; }
         .act-card .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
         .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; }
-        .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: balance; }
+        .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: balance; margin-top: 2px; }
         .act-card .tag-major { font-weight: 600; color: var(--text); opacity: 0.7; }
         .act-card .tag-minor { color: var(--text-dim); }
         .act-card .tag-sep { color: var(--text-dim); opacity: 0.3; }
@@ -185,8 +187,8 @@
         .view-twoline .act-card h3 { font-size: 0.9rem; }
         .view-twoline .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
         .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
-        .view-twoline .act-card .links { margin-left: auto; }
+        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; flex-direction: row-reverse; }
+        .view-twoline .act-card .links { margin-right: auto; }
         .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
         .view-twoline .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-twoline .act-card .act-collab { display: none; }
