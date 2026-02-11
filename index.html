@@ -51,6 +51,13 @@
         .countdown-unit .num { font-size: 1.1rem; font-weight: 700; color: var(--accent); line-height: 1; }
         .countdown-unit .lbl { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
 
+        /* ── FONT SIZE LEVELS ── */
+        body.fs-xs { font-size: 13px; }
+        body.fs-s  { font-size: 14px; }
+        body.fs-m  { font-size: 16px; }
+        body.fs-l  { font-size: 18px; }
+        body.fs-xl { font-size: 20px; }
+
         /* ── CONTROLS ── */
         .control-group { display: flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; color: var(--text-dim); }
         .control-group label { cursor: pointer; padding: 2px 7px; border-radius: 4px 0 4px 0; border: 1px solid var(--border); transition: all 0.2s; }
@@ -58,8 +65,20 @@
         .control-group input[type="radio"] { display: none; }
         .control-group input[type="radio"]:checked + label { background: var(--accent); color: #000; border-color: var(--accent); }
 
+        /* ── APPENDIX SECTION ── */
+        .appendix { margin-top: 2rem; }
+        .appendix > h2 { font-size: 1.1rem; margin-bottom: 0; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 0 6px 0 6px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 8px; background: var(--card); transition: background 0.2s, border-color 0.2s; color: var(--text-dim); }
+        .appendix > h2:hover { background: var(--card-hover); border-color: var(--accent); }
+        .appendix > h2 .fold-arrow { font-size: 0.7rem; margin-left: auto; color: var(--text-dim); transition: transform 0.2s; }
+        .appendix > h2.collapsed .fold-arrow { transform: rotate(-90deg); }
+        .appendix-content { transition: max-height 0.3s ease; overflow: hidden; padding-top: 1rem; }
+        .appendix-content.collapsed { max-height: 0 !important; padding-top: 0; }
+        .appendix-note { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.6; }
+        .appendix-note a { color: var(--accent); text-decoration: none; }
+        .appendix-note a:hover { text-decoration: underline; }
+
         /* ── TODO SECTION ── */
-        #todo-section { background: var(--card); border: 1px solid var(--border); border-radius: 6px 0 6px 0; padding: 1rem; margin-bottom: 2rem; }
+        #todo-section { background: var(--card); border: 1px solid var(--border); border-radius: 6px 0 6px 0; padding: 1rem; margin-bottom: 1rem; }
         #todo-section h2 { font-size: 1rem; color: var(--accent); cursor: pointer; user-select: none; }
         #todo-section h2::before { content: '\25B8 '; }
         #todo-section h2.open::before { content: '\25BE '; }
@@ -210,6 +229,14 @@
                 <input type="radio" name="theme" id="theme-dark" value="dark"><label for="theme-dark">Dark</label>
                 <input type="radio" name="theme" id="theme-oled" value="oled"><label for="theme-oled">OLED</label>
             </div>
+            <div class="control-group">
+                <span>Size:</span>
+                <input type="radio" name="fontsize" id="fs-xs" value="xs"><label for="fs-xs">XS</label>
+                <input type="radio" name="fontsize" id="fs-s" value="s"><label for="fs-s">S</label>
+                <input type="radio" name="fontsize" id="fs-m" value="m" checked><label for="fs-m">M</label>
+                <input type="radio" name="fontsize" id="fs-l" value="l"><label for="fs-l">L</label>
+                <input type="radio" name="fontsize" id="fs-xl" value="xl"><label for="fs-xl">XL</label>
+            </div>
         </div>
     </header>
     <div class="fold-controls">
@@ -217,11 +244,17 @@
         <button id="collapse-all">Collapse all</button>
     </div>
     <main id="lineup"></main>
-    <section id="todo-section">
-        <h2 id="todo-toggle">Acts still needing info / link verification</h2>
-        <div id="todo-stats"></div>
-        <div id="todo-list"></div>
-    </section>
+    <section class="appendix">
+        <h2 id="appendix-toggle" class="collapsed">Appendix <span class="fold-arrow">&#9660;</span></h2>
+        <div class="appendix-content collapsed" id="appendix-content">
+            <div class="appendix-note">
+                This lineup guide was assembled by <strong>malkiii</strong> with AI assistance. Source code at <a href="https://github.com/mxmilkiib/outlook-origins-2026" target="_blank">github.com/mxmilkiib/outlook-origins-2026</a>. Deployed at <a href="https://outlook-origins-2026.vercel.app" target="_blank">outlook-origins-2026.vercel.app</a>. Data is crowd-sourced and may contain inaccuracies; contributions welcome via pull request.
+            </div>
+            <section id="todo-section">
+                <h2 id="todo-toggle">Acts still needing info / link verification</h2>
+                <div id="todo-stats"></div>
+                <div id="todo-list"></div>
+            </section>
 
 <script>
 const GENRES = {
@@ -827,6 +860,28 @@ document.getElementById('expand-all').addEventListener('click', () => {
     localStorage.setItem('oo2026-folds', '{}');
 });
 
+// ── FONT SIZE ──
+function applyFontSize(size) {
+    localStorage.setItem('oo2026-fontsize', size);
+    document.body.classList.remove('fs-xs','fs-s','fs-m','fs-l','fs-xl');
+    document.body.classList.add('fs-' + size);
+}
+(function initFontSize() {
+    const saved = localStorage.getItem('oo2026-fontsize') || 'm';
+    applyFontSize(saved);
+    const radio = document.getElementById('fs-' + saved);
+    if (radio) radio.checked = true;
+})();
+document.querySelectorAll('input[name="fontsize"]').forEach(r => {
+    r.addEventListener('change', () => applyFontSize(r.value));
+});
+
+// ── APPENDIX TOGGLE ──
+document.getElementById('appendix-toggle').addEventListener('click', function() {
+    this.classList.toggle('collapsed');
+    document.getElementById('appendix-content').classList.toggle('collapsed');
+});
+
 render();
 </script>
 
@@ -874,6 +929,9 @@ Given the index.html file, work through acts that are missing the since (year st
 <summary>AI task: identify unknown acts</summary>
 Given the index.html file, find acts with empty desc fields in the TODO section. Research each name to determine: genre, description (3 sentences), location (from), styles, and any profile links. These are acts on the Outlook Origins 2026 lineup (bass music festival in Croatia). Some may be emerging/local artists with minimal online presence. If an act cannot be identified with reasonable confidence, leave the desc empty and note it. Work through the list alphabetically. Do not modify existing described acts.
 </details>
+
+        </div><!-- /.appendix-content -->
+    </section><!-- /.appendix -->
 
 </body>
 </html>
