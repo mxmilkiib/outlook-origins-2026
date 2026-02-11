@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outlook Origins 2026 - Lineup Guide</title>
+    <style>
+        /* ── THEME VARIABLES ── */
+        :root {
+            --dnb: #e06030; --dubstep: #7040c0; --grime: #c03030; --soundsystem: #30a040;
+            --techno: #3080d0; --breaks: #d0a020; --club: #d050a0; --ukg: #40b0b0;
+            --jazz: #d09040; --afro: #50b060; --unknown: #555;
+            --oo-gold: #c4a35a; --oo-sand: #e8d5a3; --oo-dark: #0d0d0d; --oo-warm: #1a1610;
+        }
+        [data-theme="oled"] {
+            --bg: #000; --card: #080808; --card-hover: #101010; --text: #ccc;
+            --text-dim: #666; --accent: var(--oo-gold); --border: #1a1a1a; --link-bg: #141414; --link-hover: var(--oo-gold); --link-hover-text: #000;
+        }
+        [data-theme="dark"] {
+            --bg: #0d0d0d; --card: #161616; --card-hover: #1c1c1c; --text: #e0e0e0;
+            --text-dim: #888; --accent: var(--oo-gold); --border: #2a2a2a; --link-bg: #222; --link-hover: var(--oo-gold); --link-hover-text: #000;
+        }
+        [data-theme="mid"] {
+            --bg: #2a2a2e; --card: #333338; --card-hover: #3a3a40; --text: #d0d0d0;
+            --text-dim: #999; --accent: var(--oo-gold); --border: #444; --link-bg: #3e3e44; --link-hover: var(--oo-gold); --link-hover-text: #000;
+        }
+        [data-theme="light"] {
+            --bg: #f4f1eb; --card: #fff; --card-hover: #f0ede6; --text: #1a1a1a;
+            --text-dim: #666; --accent: #8a6d2b; --border: #d4d0c8; --link-bg: #e8e4dc; --link-hover: #8a6d2b; --link-hover-text: #fff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; padding: 1rem; max-width: 1200px; margin: 0 auto; transition: background 0.3s, color 0.3s; }
+
+        /* ── HEADER ── */
+        header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; flex-wrap: wrap; }
+        .header-left { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 280px; }
+        .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+        .oo-logo { width: 52px; height: 52px; flex-shrink: 0; }
+        .oo-logo circle { fill: none; stroke: var(--accent); stroke-width: 2; }
+        .oo-logo text { fill: var(--accent); font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .header-info { flex: 1; }
+        .header-info h1 { font-size: 1.4rem; color: var(--accent); letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 0.15rem; }
+        .header-info h1 span { font-weight: 700; }
+        .header-info .subtitle { color: var(--text-dim); font-size: 0.8rem; letter-spacing: 0.5px; }
+        .header-info .subtitle a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .header-info .subtitle a:hover { border-bottom-color: var(--accent); }
+
+        /* ── COUNTDOWN ── */
+        .countdown { display: flex; gap: 0.8rem; font-variant-numeric: tabular-nums; }
+        .countdown-unit { text-align: center; }
+        .countdown-unit .num { font-size: 1.1rem; font-weight: 700; color: var(--accent); line-height: 1; }
+        .countdown-unit .lbl { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+
+        /* ── CONTROLS ── */
+        .control-group { display: flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; color: var(--text-dim); }
+        .control-group label { cursor: pointer; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--border); transition: all 0.2s; }
+        .control-group input[type="radio"] { display: none; }
+        .control-group input[type="radio"]:checked + label { background: var(--accent); color: #000; border-color: var(--accent); }
+
+        /* ── TODO SECTION ── */
+        #todo-section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; }
+        #todo-section h2 { font-size: 1rem; color: var(--accent); cursor: pointer; user-select: none; }
+        #todo-section h2::before { content: '\25B8 '; }
+        #todo-section h2.open::before { content: '\25BE '; }
+        #todo-list { display: none; margin-top: 0.75rem; column-count: 3; column-gap: 1rem; font-size: 0.8rem; color: var(--text-dim); }
+        #todo-list.open { display: block; }
+        #todo-list label { display: block; break-inside: avoid; padding: 2px 0; cursor: pointer; }
+        #todo-list input[type="checkbox"] { margin-right: 0.4rem; accent-color: var(--accent); }
+        #todo-stats { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.25rem; }
+
+        /* ── GENRE SECTIONS ── */
+        .genre-section { margin-bottom: 1.5rem; }
+        .genre-section h2 { font-size: 1.1rem; margin-bottom: 0; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 8px; background: var(--card); transition: background 0.2s, border-color 0.2s; }
+        .genre-section h2:hover { background: var(--card-hover); border-color: var(--accent); }
+        .genre-section h2 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .genre-section h2 .fold-arrow { font-size: 0.7rem; margin-left: auto; color: var(--text-dim); transition: transform 0.2s; }
+        .genre-section h2.collapsed .fold-arrow { transform: rotate(-90deg); }
+        .genre-section .acts-grid { transition: max-height 0.3s ease; overflow: hidden; }
+        .genre-section .acts-grid.collapsed { max-height: 0 !important; margin-top: 0; }
+        .genre-section .acts-grid:not(.collapsed) { margin-top: 0.75rem; }
+        .genre-section .genre-count { font-size: 0.7rem; color: var(--text-dim); font-weight: 400; }
+
+        /* ── FOLD ALL CONTROLS ── */
+        .fold-controls { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; }
+        .fold-controls button { font-size: 0.65rem; padding: 3px 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
+        .fold-controls button:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ── CARD VIEW (default) ── */
+        .acts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.75rem; }
+        .act-card { background: var(--card); border: 1px solid var(--border); border-radius: 5px; padding: 0.7rem 0.75rem; transition: background 0.2s; display: flex; flex-direction: column; }
+        .act-card:hover { background: var(--card-hover); }
+        .act-card.corner-a { border-radius: 6px 0 6px 0; }
+        .act-card.corner-b { border-radius: 0 6px 0 6px; }
+        .act-card .act-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.2rem; }
+        .act-card h3 { font-size: 1rem; margin: 0; flex-shrink: 0; }
+        .act-card .act-taxonomy { text-align: right; flex-shrink: 1; min-width: 0; }
+        .act-card .act-field { font-size: 0.7rem; color: var(--text-dim); line-height: 1.5; }
+        .act-card .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
+        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; }
+        .act-card .desc { font-size: 0.85rem; color: var(--text-dim); margin-top: 0.6rem; margin-bottom: 0; flex: 1; }
+        .act-card .act-bottom { margin-top: auto; padding-top: 0.5rem; }
+        .act-card .act-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; margin-bottom: 0.35rem; align-items: center; }
+        .act-card .act-meta .act-field { white-space: nowrap; }
+        .act-card .act-meta .act-field:first-child { margin-left: auto; order: 99; }
+        .act-card .confidence { opacity: 0.5; font-size: 0.7rem; }
+        .act-card .releases-count { font-size: 0.65rem; color: var(--text-dim); margin-left: 4px; }
+        .act-card .links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .act-card .links a { font-size: 0.7rem; text-decoration: none; color: var(--text); background: var(--link-bg); padding: 3px 7px; border-radius: 3px; transition: background 0.2s, color 0.2s; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 3px; }
+        .act-card .links a:hover { background: var(--link-hover); color: var(--link-hover-text); }
+        .act-card .links a svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+        /* ── TWO-LINE VIEW ── */
+        .view-twoline .acts-grid { display: flex; flex-direction: column; gap: 3px; }
+        .view-twoline .act-card { border-radius: 3px !important; padding: 0.4rem 0.65rem; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.5rem; }
+        .view-twoline .act-card .act-top { margin: 0; gap: 0.4rem; flex: 1; min-width: 200px; }
+        .view-twoline .act-card h3 { font-size: 0.9rem; }
+        .view-twoline .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
+        .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+        .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
+        .view-twoline .act-card .act-meta .act-field:first-child { margin-left: 0; order: 0; }
+        .view-twoline .act-card .links a { font-size: 0.6rem; padding: 1px 5px; }
+        .view-twoline .act-card .links a svg { width: 10px; height: 10px; }
+
+        /* ── LIST VIEW ── */
+        .view-list .acts-grid { display: flex; flex-direction: column; gap: 1px; }
+        .view-list .act-card { border-radius: 0 !important; padding: 0.3rem 0.65rem; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 0.3rem 0.5rem; }
+        .view-list .act-card .act-top { margin: 0; flex-shrink: 0; gap: 0.3rem; }
+        .view-list .act-card h3 { font-size: 0.85rem; min-width: 150px; margin: 0; }
+        .view-list .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
+        .view-list .act-card .act-taxonomy .genre-tag { font-size: 0.5rem; padding: 0 4px; }
+        .view-list .act-card .desc { margin: 0; font-size: 0.75rem; flex: 1; min-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .view-list .act-card .act-bottom { margin: 0; padding: 0; flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; }
+        .view-list .act-card .act-meta { display: flex; gap: 0.15rem 0.4rem; margin: 0; font-size: 0.55rem; }
+        .view-list .act-card .act-meta .act-field:first-child { margin-left: 0; order: 0; }
+        .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
+        .view-list .act-card .links { flex-shrink: 0; }
+        .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
+        .view-list .act-card .links a svg { width: 10px; height: 10px; }
+
+        /* ── SERVICE LINK COLOURS ── */
+        .act-card .links a.lnk-sc svg { fill: #ff5500; }
+        .act-card .links a.lnk-bc svg { fill: #1da0c3; }
+        .act-card .links a.lnk-ig svg { fill: #E4405F; }
+        .act-card .links a.lnk-yt svg { fill: #FF0000; }
+        .act-card .links a.lnk-sp svg { fill: #1DB954; }
+        .act-card .links a.lnk-dc svg { fill: #333; }
+        .act-card .links a.lnk-mb svg { fill: #BA478F; }
+        [data-theme="light"] .act-card .links a.lnk-dc svg { fill: #999; }
+        .act-card .links a.lnk-search svg { fill: var(--text-dim) !important; opacity: 0.35; }
+        .act-card .links a.lnk-search { opacity: 0.5; }
+
+        /* ── REGEN PROMPT ── */
+        .regen-prompt { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-top: 2rem; font-size: 0.75rem; color: var(--text-dim); line-height: 1.7; white-space: pre-wrap; font-family: 'Courier New', monospace; }
+        .regen-prompt summary { cursor: pointer; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--accent); user-select: none; margin-bottom: 0.5rem; }
+
+        @media (max-width: 700px) {
+            header { flex-direction: column; align-items: stretch; }
+            .header-left { justify-content: center; }
+            .header-right { align-items: center; }
+            .header-info { text-align: center; }
+            .acts-grid { grid-template-columns: 1fr; }
+            #todo-list { column-count: 2; }
+            .view-list .act-card { flex-wrap: wrap; }
+            .countdown { gap: 0.6rem; }
+            .countdown-unit .num { font-size: 1rem; }
+            .header-info h1 { font-size: 1.2rem; letter-spacing: 3px; }
+        }
+        @media (max-width: 400px) {
+            #todo-list { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <svg class="oo-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30"/>
+                <text x="32" y="29" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5">OUTLOOK</text>
+                <text x="32" y="40" text-anchor="middle" font-size="7" font-weight="300" letter-spacing="2.5">ORIGINS</text>
+            </svg>
+            <div class="header-info">
+                <h1><span>Outlook</span> Origins 2026</h1>
+                <p class="subtitle">The Garden, Tisno, Croatia &mdash; 23&ndash;27 July 2026 &mdash; <a href="https://www.outlookorigins.com/" target="_blank">outlookorigins.com</a></p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="countdown" id="countdown"></div>
+            <div class="control-group">
+                <span>View:</span>
+                <input type="radio" name="view" id="view-card" value="card" checked><label for="view-card">Cards</label>
+                <input type="radio" name="view" id="view-twoline" value="twoline"><label for="view-twoline">Compact</label>
+                <input type="radio" name="view" id="view-list" value="list"><label for="view-list">List</label>
+            </div>
+            <div class="control-group">
+                <span>Theme:</span>
+                <input type="radio" name="theme" id="theme-system" value="system" checked><label for="theme-system">System</label>
+                <input type="radio" name="theme" id="theme-light" value="light"><label for="theme-light">Light</label>
+                <input type="radio" name="theme" id="theme-mid" value="mid"><label for="theme-mid">Mid</label>
+                <input type="radio" name="theme" id="theme-dark" value="dark"><label for="theme-dark">Dark</label>
+                <input type="radio" name="theme" id="theme-oled" value="oled"><label for="theme-oled">OLED</label>
+            </div>
+        </div>
+    </header>
+    <div class="fold-controls">
+        <button id="expand-all">Expand all</button>
+        <button id="collapse-all">Collapse all</button>
+    </div>
+    <main id="lineup"></main>
+    <section id="todo-section">
+        <h2 id="todo-toggle">Acts still needing info / link verification</h2>
+        <div id="todo-stats"></div>
+        <div id="todo-list"></div>
+    </section>
+
+<script>
+const GENRES = {
+    dnb:         { label: "Drum & Bass / Jungle", color: "var(--dnb)" },
+    dubstep:     { label: "Dubstep / Deep Bass",  color: "var(--dubstep)" },
+    grime:       { label: "Grime",                color: "var(--grime)" },
+    soundsystem: { label: "Soundsystem / Dub / Roots", color: "var(--soundsystem)" },
+    techno:      { label: "Techno / Electro / Experimental", color: "var(--techno)" },
+    breaks:      { label: "Breakbeat / Rave",     color: "var(--breaks)" },
+    club:        { label: "Club Music / Hybrid Bass", color: "var(--club)" },
+    ukg:         { label: "UK Garage / 2-Step",   color: "var(--ukg)" },
+    jazz:        { label: "Jazz / Live",          color: "var(--jazz)" },
+    afro:        { label: "Amapiano / Gqom / Afro-Electronic", color: "var(--afro)" },
+    unknown:     { label: "Uncategorised",        color: "var(--unknown)" },
+};
+
+// links: { sc: "slug or url", bc: "slug.bandcamp.com", ig: "handle", yt: "channel or search", sp: "artist id or name" }
+// If a link value is just a slug, the renderer builds the full URL.
+// If desc is empty string, the act goes into the TODO list.
+const acts = [
+    // ── DRUM & BASS / JUNGLE ──
+    { name: "Goldie", genre: "dnb", desc: "Legendary DnB pioneer and Metalheadz label boss. Cinematic, orchestral drum & bass since the early 90s.", links: { sc: "goldiemusic", ig: "golaboratories", dc: "4005-Goldie" }, from: "Wolverhampton, England", styles: "cinematic dnb, orchestral jungle, ambient dnb", conf: 3, since: 1992, releases: 45 },
+    { name: "Fabio & Grooverider", genre: "dnb", desc: "Iconic DnB DJ duo. BBC Radio 1 legends who helped define jungle and drum & bass from day one.", links: { dc: "271498-Fabio-Grooverider" }, from: "London, England", styles: "liquid dnb, jungle, classic dnb", conf: 3, since: 1988 },
+    { name: "DJ Storm", genre: "dnb", desc: "Metalheadz resident and one of DnB's original selectors. Decades-deep in the scene.", links: { sc: "djstorm", dc: "13694-DJ-Storm" }, from: "London, England", styles: "dark dnb, techstep, classic jungle", conf: 3, since: 1991 },
+    { name: "DJ Flight", genre: "dnb", desc: "DnB DJ. Metalheadz affiliated, known for deep, rolling selections.", links: { sc: "djflight", dc: "43048-DJ-Flight" }, from: "London, England", styles: "deep dnb, liquid, rolling dnb", conf: 3 },
+    { name: "Alix Perez", genre: "dnb", desc: "DnB and half-time producer. Runs 1985 Music. Dark, cinematic bass music.", links: { sc: "alixperez", ig: "alixperez", bc: "1985music", dc: "1467069-Alix-Perez" }, from: "Brussels, Belgium / London", styles: "halftime, autonomic, dark dnb, 140", conf: 3, since: 2007, releases: 30 },
+    { name: "Tim Reaper b2b Neffa-T", genre: "dnb", desc: "Jungle revivalist producer meets veteran MC. Oldschool amen breaks, reese bass, and raw energy.", links: { sc: "timreaper", bc: "timreaper", ig: "timreaper", dc: "4648498-Tim-Reaper" }, from: "London, England", styles: "jungle, oldschool hardcore, amen breaks", conf: 3, since: 2014, releases: 55 },
+    { name: "Breakage", genre: "dnb", desc: "DnB and dubstep producer. Digital Soundboy. Versatile bass music spanning DnB, dubstep, and garage.", links: { sc: "breakage", dc: "279389-Breakage" }, from: "London, England", styles: "dnb, dubstep, uk garage, bass", conf: 3, since: 2004, releases: 35 },
+    { name: "Ant TC1", genre: "dnb", desc: "DnB DJ and producer. Dispatch Recordings co-founder. Deep, rolling, precision drum & bass.", links: { sc: "anttc1", dc: "193568-Ant-TC1" }, from: "London, England", styles: "deep dnb, rolling, tech dnb", conf: 3 },
+    { name: "Foul Play", genre: "dnb", desc: "Seminal oldschool jungle/hardcore duo. Pioneers of the early 90s rave-to-jungle transition.", links: { dc: "3200-Foul-Play" }, from: "London, England", styles: "oldschool jungle, hardcore, breakbeat", conf: 3, since: 1992, releases: 20 },
+    { name: "Loxy", genre: "dnb", desc: "Dark DnB DJ and producer. Cylon Recordings. Deep, atmospheric, and menacing selections.", links: { sc: "loxy", dc: "10992-Loxy" }, from: "London, England", styles: "dark dnb, techstep, neurofunk", conf: 3, since: 1995, releases: 80 },
+    { name: "Skeptical", genre: "dnb", desc: "DnB producer. Exit Records. Minimal, precise, clinical drum & bass.", links: { sc: "skeptical", bc: "skepticalmusic", ig: "skepticaldnb", dc: "1562974-Skeptical" }, from: "Bristol, England", styles: "minimal dnb, tech dnb, clinical bass", conf: 3, since: 2010, releases: 40 },
+    { name: "SP:MC", genre: "dnb", desc: "Drum & bass MC. One of the most in-demand hosts on the DnB circuit.", links: {}, from: "England", styles: "mc, hosting", conf: 2 },
+    { name: "MC GQ", genre: "dnb", desc: "Legendary DnB MC. Decades of hosting alongside the biggest names in drum & bass.", links: { dc: "244488-MC-GQ" }, from: "London, England", styles: "mc, hosting, jungle mc", conf: 3 },
+    { name: "Double O", genre: "dnb", desc: "DnB DJ. Metalheadz affiliated. Deep, dark drum & bass selector.", links: {}, from: "London, England", styles: "deep dnb, dark dnb", conf: 2 },
+    { name: "Sam Binga b2b Che3kz", genre: "dnb", desc: "Bristol DnB/bass producer meets selector. Critical Music. Inventive rhythms and heavy bass.", links: { sc: "sambingamusic", dc: "2748862-Sam-Binga" }, from: "Bristol, England", styles: "halftime, bass, broken beat dnb", conf: 3 },
+    { name: "Elisa Do Brasil", genre: "dnb", desc: "DnB DJ from Brazil/France. High-energy jungle and drum & bass sets.", links: { sc: "elisadobrasil", dc: "196979-Elisa-Do-Brasil" }, from: "Paris, France / Brazil", styles: "jungle, dnb, high-energy", conf: 3 },
+    { name: "A.Fruit", genre: "dnb", desc: "DnB producer and DJ. Metalheadz, Rupture. Dark, precise, rolling drum & bass.", links: { sc: "afruit", dc: "5975197-AFruit" }, from: "London, England", styles: "dark dnb, rolling, techstep", conf: 3 },
+    { name: "Visages", genre: "dnb", desc: "DnB production duo. Deep, atmospheric drum & bass.", links: { sc: "visages", dc: "4697929-Visages" }, from: "England", styles: "deep dnb, atmospheric, liquid", conf: 2 },
+    { name: "iNTROSPEKT", genre: "dnb", desc: "LA-born DJ and producer. Tempa. Atmospheric, deep, techy drum & bass and dubstep.", links: { sc: "sageintrospekt" }, from: "Los Angeles, USA", styles: "atmospheric dnb, dubstep, tech, deep", conf: 3 },
+    { name: "Thys", genre: "dnb", desc: "Member of Noisia. Neurofunk and experimental bass. Technically precise production.", links: { sc: "thysmusic", dc: "1455974-Thys" }, from: "Groningen, Netherlands", styles: "neurofunk, experimental bass, sound design", conf: 3, since: 2003, releases: 15 },
+
+    // ── DUBSTEP / DEEP BASS ──
+    { name: "Mala", genre: "dubstep", desc: "Deep dubstep pioneer. Digital Mystikz, DMZ. Spiritual, sub-heavy meditations rooted in dub.", links: { sc: "maladmz", dc: "353539-Mala-2" }, from: "South London, England", styles: "deep dubstep, dub, spiritual bass, 140", conf: 3, since: 2003, releases: 30 },
+    { name: "Youngsta", genre: "dubstep", desc: "Dubstep DJ. Long-running Rinse FM resident. An architect of the original dubstep sound.", links: { sc: "youngsta", dc: "326818-Youngsta" }, from: "Croydon, England", styles: "deep dubstep, 140, dark garage", conf: 3 },
+    { name: "Pinch b2b Beatrice M.", genre: "dubstep", desc: "Bristol dubstep pioneer and Tectonic Recordings boss meets fellow bass selector.", links: { sc: "pinch", dc: "431615-Pinch-3" }, from: "Bristol, England", styles: "dubstep, techno-dub, 140, tectonic", conf: 3 },
+    { name: "Commodo", genre: "dubstep", desc: "Dubstep producer. Black Acre, Deep Medi. Raw, stripped-back, heavy 140 bass music.", links: { sc: "commodo", bc: "commodomusic", dc: "2617474-Commodo" }, from: "England", styles: "140, raw dubstep, grime-step", conf: 3 },
+    { name: "J:Kenzo", genre: "dubstep", desc: "Dubstep producer and DJ. Rinse FM, Tempa. Deep and heavy 140 with dub-techno textures.", links: { sc: "jkenzo", bc: "jkenzomusic", dc: "1293069-JKenzo" }, from: "England", styles: "deep dubstep, 140, dub-techno", conf: 3 },
+    { name: "Sully b2b Kode9", genre: "dubstep", desc: "Inventive grime/dubstep producer meets Hyperdub boss. Rhythmic futurism.", links: { sc: "sully", dc: "955986-Sully-5" }, from: "London, England", styles: "grime, dubstep, footwork, rhythmic bass", conf: 3 },
+    { name: "Silkie", genre: "dubstep", desc: "Dubstep producer. Deep Medi Musik. Lush, deep half-time bass and ethereal pads.", links: { sc: "silkie", dc: "1199919-Silkie" }, from: "London, England", styles: "deep dubstep, half-time, ambient bass", conf: 3 },
+    { name: "El-B", genre: "dubstep", desc: "UK garage pioneer. Ghost Records. Godfather of the dark garage / proto-dubstep sound.", links: { sc: "el-b", dc: "23781-El-B" }, from: "London, England", styles: "dark garage, proto-dubstep, 2-step, ukg", conf: 3, since: 1998, releases: 50 },
+    { name: "Goth-Trad", genre: "dubstep", desc: "Japanese bass producer. Deep Medi. Industrial dubstep and experimental low-end.", links: { sc: "gothtrad", dc: "234610-Goth-Trad" }, from: "Tokyo, Japan", styles: "industrial dubstep, noise bass, experimental", conf: 3 },
+    { name: "J. Sparrow", genre: "dubstep", desc: "Dub/dubstep producer. ZamZam Sounds. Roots-influenced deep bass and steppers.", links: { sc: "j-sparrow", dc: "3434949-J-Sparrow" }, from: "Bristol, England", styles: "dub-step, roots dub, steppers, 140", conf: 3 },
+    { name: "The Bug feat. Flowdan, Tikiman & Scion", genre: "dubstep", desc: "Kevin Martin's industrial dub/ragga project. Crushing bass weight with grime and dancehall MCs.", links: { sc: "thebugmusic", dc: "23624-The-Bug" }, from: "London, England", styles: "industrial dub, ragga, bass weight, noise", conf: 3, since: 1997, releases: 25 },
+    { name: "Oris Jay (Darqwan)", genre: "dubstep", desc: "Early dubstep pioneer. Texture Records founder. Deep, dark, foundational 140.", links: { dc: "51655-Oris-Jay" }, from: "London, England", styles: "proto-dubstep, dark garage, 140", conf: 3 },
+    { name: "Cyrus", genre: "dubstep", desc: "Dubstep producer. Tempa, Deep Medi. Heavy, rolling 140 with mechanical precision.", links: { sc: "cyrusofficial", dc: "264437-Cyrus-4" }, from: "England", styles: "deep dubstep, rolling 140, mechanical", conf: 3 },
+    { name: "Horsepower Productions", genre: "dubstep", desc: "UKG/dubstep pioneers. Tempa Records. Dark garage instrumentals that bridged garage and dubstep.", links: { dc: "73949-Horsepower-Productions" }, from: "South London, England", styles: "dark garage, proto-dubstep, ukg", conf: 3 },
+    { name: "Bakey", genre: "dubstep", desc: "UK bass producer. Grime-influenced dubstep and 140. Raw, direct sound. DJ Mag Breakthrough Artist 2023.", links: { sc: "bakeymusic", bc: "bakeymusic", dc: "5235349-Bakey" }, from: "London, England", styles: "140, grime-step, raw bass", conf: 3 },
+    { name: "Napes", genre: "dubstep", desc: "Bass music DJ and producer. Garage-influenced dubstep and 140.", links: { sc: "napesmusic" }, from: "England", styles: "140, garage-dub, bass", conf: 2 },
+    { name: "Yushh", genre: "dubstep", desc: "Bass music DJ and producer. Emerging force in the 140/dubstep scene.", links: { sc: "yushh" }, from: "England", styles: "140, dubstep, bass", conf: 2 },
+    { name: "T-Man", genre: "dubstep", desc: "Dubstep MC. Regular voice on Deep Medi sessions, frequently hosting for Mala and the DMZ camp.", links: {}, from: "London, England", styles: "mc, dubstep hosting", conf: 2 },
+    { name: "Dubrunner", genre: "dubstep", desc: "Dub-influenced bass producer. Deep, low-end-heavy productions.", links: { sc: "dubrunner" }, from: "England", styles: "dub, deep bass, 140", conf: 2 },
+
+    // ── GRIME ──
+    { name: "Roll Deep", genre: "grime", desc: "Legendary grime crew. One of the genre's founding collectives, featuring Wiley, Flowdan, and more.", links: { dc: "285718-Roll-Deep" }, from: "Bow, East London", styles: "grime, garage-mc, eskibeat", conf: 3, since: 2002, releases: 15 },
+    { name: "Sir Spyro", genre: "grime", desc: "Grime DJ. Rinse FM. One of the most respected and consistent grime selectors.", links: { sc: "sirspyro", ig: "sirspyro" }, from: "London, England", styles: "grime, instrumentals, pirate radio", conf: 3 },
+    { name: "Manga Saint Hilare", genre: "grime", desc: "Grime MC. Peng Tings. Witty, technical lyricism and versatile flow.", links: { sc: "mangasainthilare", ig: "mangasainthilare", dc: "3805003-Manga-Saint-Hilare" }, from: "London, England", styles: "grime, uk rap, lyrical", conf: 3 },
+    { name: "Jammz", genre: "grime", desc: "Grime MC. I Spy Records. Raw, energetic bars.", links: { sc: "jammz", dc: "4724416-Jammz" }, from: "London, England", styles: "grime, mc", conf: 3 },
+    { name: "Footsie", genre: "grime", desc: "Grime MC and producer. Newham Generals. East London grime stalwart.", links: { sc: "footsie", dc: "433010-Footsie" }, from: "East London, England", styles: "grime, mc, production", conf: 3 },
+    { name: "Killa P", genre: "grime", desc: "Grime and ragga MC. Regular Bug collaborator. Ragga-grime crossover.", links: { dc: "662811-Killa-P" }, from: "London, England", styles: "ragga, grime, dancehall mc", conf: 3 },
+    { name: "Slaughter Mob", genre: "grime", desc: "Grime crew. Dark, heavy grime productions and MCs.", links: {}, from: "London, England", styles: "dark grime, instrumental grime", conf: 2 },
+    { name: "Double Clapperz", genre: "grime", desc: "Grime DJs and producers. High-energy grime sets and productions.", links: { sc: "doubleclapperz" }, from: "London, England", styles: "grime, high-energy, club grime", conf: 2 },
+    { name: "Sgt Pokes", genre: "grime", desc: "Grime DJ. No Hats No Hoods. Specialist grime selector.", links: { sc: "sgt-pokes" }, from: "London, England", styles: "grime, pirate radio, specialist", conf: 2 },
+    { name: "Crazy D", genre: "grime", desc: "Grime MC. Energetic, raw lyrical style.", links: {}, from: "London, England", styles: "grime, mc", conf: 1 },
+    { name: "Flowdan", genre: "grime", desc: "Grime MC. Roll Deep alumni. The Bug collaborator. Iconic voice in bass music.", links: { sc: "flowdan", ig: "flowdan_", dc: "336530-Flowdan" }, from: "London, England", styles: "grime, ragga, dancehall mc, bass", conf: 3, since: 2002, releases: 20 },
+
+    // ── SOUNDSYSTEM / DUB / ROOTS ──
+    { name: "Channel One Sound System", genre: "soundsystem", desc: "Legendary UK dub soundsystem. Kings of Notting Hill Carnival. Roots, dub, and steppers.", links: { dc: "252902-Channel-One-Sound-System" }, from: "London, England", styles: "roots dub, steppers, soundsystem", conf: 3, since: 1979 },
+    { name: "Iration Steppas", genre: "soundsystem", desc: "Dub and roots soundsystem from Leeds. Heavyweight dub sessions since the late 80s.", links: { dc: "37178-Iration-Steppas" }, from: "Leeds, England", styles: "dub, roots, steppers, soundsystem", conf: 3, since: 1988, releases: 30 },
+    { name: "O.B.F. feat. Sr. Wilson & Charlie P", genre: "soundsystem", desc: "French dub soundsystem with reggae vocalists. Heavy sub-bass and dancehall energy.", links: { sc: "o-b-f", dc: "1766814-OBF" }, from: "Lyon, France", styles: "digital dub, soundsystem, dancehall", conf: 3 },
+    { name: "Sinai Sound", genre: "soundsystem", desc: "Dub soundsystem. Deep roots and steppers selections.", links: {}, from: "England", styles: "roots, steppers, soundsystem dub", conf: 2 },
+    { name: "Sub Basics", genre: "soundsystem", desc: "Dub and bass soundsystem. Sub-heavy selections spanning dub, roots, and steppers.", links: {}, from: "England", styles: "dub, roots, sub-bass", conf: 1 },
+
+    // ── TECHNO / ELECTRO / EXPERIMENTAL ──
+    { name: "Objekt", genre: "techno", desc: "Techno and electro producer. Genre-bending DJ sets, known for the Objekt# series. Hessle Audio.", links: { sc: "objekt", ig: "objektmusic", dc: "2424547-Objekt-2" }, from: "Berlin, Germany / England", styles: "techno, electro, sound design, experimental", conf: 3, since: 2011, releases: 15 },
+    { name: "Ben UFO", genre: "techno", desc: "DJ. Hessle Audio co-founder. Omnivorous, genre-fluid selections spanning bass, techno, and beyond.", links: { sc: "benufo", dc: "1695770-Ben-UFO" }, from: "London, England", styles: "omnivorous, techno, bass, uk bass, dubstep", conf: 3 },
+    { name: "Batu", genre: "techno", desc: "Techno and bass producer. Timedance label founder. Rhythmic, textural Bristol sound.", links: { sc: "baborr", dc: "4626979-Batu-2" }, from: "Bristol, England", styles: "techno, bass, percussive, textural", conf: 3 },
+    { name: "Barker", genre: "techno", desc: "Techno and experimental producer. Formerly of Barker & Baumecker. Textural, alien electronics.", links: { sc: "barker-music", dc: "749498-Barker-2" }, from: "Berlin, Germany / England", styles: "experimental techno, textural, alien", conf: 3 },
+    { name: "Skee Mask", genre: "techno", desc: "Breakbeat, IDM, and techno producer. Ilian Tape. Lush pads, broken rhythms, deep atmospherics.", links: { sc: "skee-mask", dc: "5131498-Skee-Mask" }, from: "Munich, Germany", styles: "breakbeat, idm, ambient techno, electro", conf: 3, since: 2015, releases: 12 },
+    { name: "Deena Abdelwahed", genre: "techno", desc: "Tunisian electronic producer. Experimental club music with MENA influences. InFiné Music.", links: { sc: "deenaabdelwahed", ig: "deenaabdelwahed", dc: "5458023-Deena-Abdelwahed" }, from: "Tunis, Tunisia / Paris", styles: "experimental club, deconstructed, MENA-influenced", conf: 3 },
+    { name: "re:ni", genre: "techno", desc: "Techno and electro DJ. Rinse FM. Dark, industrial, high-energy sets.", links: { sc: "re-ni" }, from: "London, England", styles: "techno, electro, industrial", conf: 2 },
+    { name: "Mor Elian", genre: "techno", desc: "Techno DJ. Fever AM label. Rhythmic, hypnotic selections.", links: { sc: "morelian", dc: "4729989-Mor-Elian" }, from: "Tel Aviv, Israel / Berlin", styles: "techno, hypnotic, rhythmic", conf: 3 },
+    { name: "Octo Octa", genre: "techno", desc: "House and breaks DJ and producer. Euphoric, emotional rave music. T4T LUV NRG.", links: { sc: "octoocta", ig: "octoocta", dc: "3004418-Octo-Octa" }, from: "New York, USA", styles: "house, breaks, rave, euphoric", conf: 3 },
+    { name: "aya & Slikback", genre: "techno", desc: "Experimental electronic artist meets Kenyan producer. Deconstructed club music and singeli-influenced chaos.", links: {}, from: "Ireland / Nairobi, Kenya", styles: "deconstructed club, singeli, experimental, noise", conf: 2 },
+    { name: "Ikonika", genre: "techno", desc: "Electronic producer. Hyperdub. Post-grime synth-driven electronics and futuristic club music.", links: { sc: "ikonika", dc: "1410449-Ikonika" }, from: "South London, England", styles: "post-grime, synth, futuristic club", conf: 3 },
+    { name: "DJ Plead", genre: "techno", desc: "Percussive club music producer. Lebanese-Australian artist. Berceuse Heroique. Frenetic rhythms.", links: { sc: "djplead", dc: "5958498-DJ-Plead" }, from: "Melbourne, Australia / Lebanon", styles: "percussive club, frenetic, global rhythms", conf: 3 },
+    { name: "gyrofield", genre: "techno", desc: "Experimental bass producer. Dense, rhythmic, high-velocity club music.", links: { sc: "gyrofield" }, from: "China / London", styles: "experimental bass, high-velocity, deconstructed", conf: 2 },
+    { name: "TSVI", genre: "techno", desc: "Club music producer. Nervous Horizon. Percussive, global-influenced rhythms.", links: { sc: "tsvi", dc: "5576499-TSVI" }, from: "London, England", styles: "percussive club, global bass, nervous horizon", conf: 3 },
+    { name: "Kode9 b2b DJ Spinn", genre: "techno", desc: "Hyperdub boss meets Chicago footwork legend (Teklife). Futurist bass and juke.", links: { sc: "kode9", dc: "109930-Kode9" }, from: "London / Chicago", styles: "futurist bass, footwork, juke, dubstep", conf: 3 },
+    { name: "Scratcha DVA", genre: "techno", desc: "Grime and electronic producer. Hyperdub, DVA Music. Funky/grime/house hybrid.", links: { sc: "scratchadva", dc: "961589-Scratcha-DVA" }, from: "London, England", styles: "funky, grime, house, hybrid", conf: 3 },
+    { name: "Takuya Nakamura", genre: "techno", desc: "Electronic producer. Hessle Audio affiliated. Textural, bass-driven electronics.", links: {}, from: "Japan / London", styles: "textural, bass electronics", conf: 1 },
+
+    // ── BREAKBEAT / RAVE ──
+    { name: "Om Unit", genre: "breaks", desc: "Bass, jungle, and ambient producer. Cosmic Bridge label. Eclectic breakbeat explorer.", links: { sc: "omunit", bc: "omunit", ig: "om_unit", dc: "460893-Om-Unit" }, from: "London, England", styles: "breakbeat, jungle, ambient, cosmic", conf: 3, since: 2008, releases: 50 },
+    { name: "Samurai Breaks", genre: "breaks", desc: "Jungle and breakbeat producer. Samurai Music. Militant, high-impact breakcore-jungle.", links: { sc: "samuraibreaks", dc: "4496771-Samurai-Breaks" }, from: "Scotland / Yorkshire, England", styles: "breakcore, jungle, militant breaks", conf: 3 },
+    { name: "Denham Audio", genre: "breaks", desc: "Rave and breaks duo. Warehouse-ready breakbeat, rave, and hardcore energy.", links: { sc: "denhamaudio", bc: "denhamaudiouk", dc: "5872498-Denham-Audio" }, from: "England", styles: "rave, breakbeat, hardcore, warehouse", conf: 3 },
+
+    // ── CLUB MUSIC / HYBRID BASS ──
+    { name: "Chunky", genre: "club", desc: "Club DJ. Eclectic bass and club selections.", links: { sc: "chunkydj" }, from: "London, England", styles: "eclectic, club, bass", conf: 2 },
+    { name: "K-Means", genre: "club", desc: "Club music producer. Intricate, percussive electronics. Livity Sound.", links: { sc: "k-means" }, from: "Bristol, England", styles: "percussive, livity sound, textural bass", conf: 2 },
+    { name: "Donna Leake", genre: "club", desc: "Eclectic DJ. NTS Radio. Deep musical knowledge spanning dub, jazz, house, and beyond.", links: { sc: "donnaleake", dc: "7422266-Donna-Leake" }, from: "London, England", styles: "eclectic, dub, jazz, house, deep", conf: 3 },
+    { name: "NikNak", genre: "club", desc: "DJ and producer. Club-ready, bass-heavy selections.", links: { sc: "niknak" }, from: "London, England", styles: "club, bass, uk funky", conf: 2 },
+    { name: "Shy One", genre: "club", desc: "Bass and club DJ and producer. Vibrant, genre-hopping sets.", links: { sc: "shy-one", dc: "2109200-DJ-Shy-One" }, from: "London, England", styles: "bass, club, genre-fluid", conf: 3 },
+    { name: "Doctor Jeep", genre: "club", desc: "Club music producer. Heavy, percussive bass. Nervous Horizon.", links: { sc: "drjeep", dc: "5576498-Doctor-Jeep" }, from: "London, England", styles: "percussive club, heavy bass, nervous horizon", conf: 3 },
+    { name: "Big Dope P", genre: "club", desc: "Juke and footwork DJ from the Netherlands. High-tempo rhythmic energy.", links: { sc: "bigdopep", dc: "1810034-Big-Dope-P" }, from: "The Hague, Netherlands", styles: "juke, footwork, ghetto house", conf: 3 },
+    { name: "Chimpo", genre: "club", desc: "Manchester bass and grime DJ. Levelz collective. Versatile selector across bass genres.", links: { sc: "chimpo", dc: "645279-Chimpo" }, from: "Manchester, England", styles: "bass, grime, garage, versatile", conf: 3 },
+    { name: "Ehua", genre: "club", desc: "Italian-Ivorian electronic artist. Nervous Horizon. Percussive, rhythmic club music.", links: { sc: "ehua", dc: "7218498-Ehua" }, from: "Milan, Italy / Ivory Coast", styles: "percussive club, polyrhythmic, global", conf: 3 },
+    { name: "Millie McKee", genre: "club", desc: "Bristol-based digger and selector. NTS. Percussive dub, spiritual jazz, psychedelic grooves. Loose Leaf.", links: { sc: "millie-mckee-383063765" }, from: "Bristol, England", styles: "dub, spiritual jazz, psychedelic, eclectic", conf: 2 },
+
+    // ── UK GARAGE / 2-STEP ──
+    { name: "Richard Akingbehin", genre: "ukg", desc: "DJ and selector. Soulful, deep music spanning house, garage, and jazz-influenced electronics.", links: {}, from: "London, England", styles: "soulful house, garage, jazz-influenced", conf: 2 },
+
+    // ── JAZZ / LIVE ──
+    { name: "Joe Armon-Jones", genre: "jazz", desc: "Jazz keyboardist. Ezra Collective collaborator. Jazz meets dub, broken beat, and electronics.", links: { sc: "joearmon-jones", ig: "joearmonjones", bc: "joearmon-jones", dc: "4819528-Joe-Armon-Jones" }, from: "London, England", styles: "jazz, dub, broken beat, keys", conf: 3, since: 2017, releases: 8 },
+    { name: "Stones Taro", genre: "jazz", desc: "Producer. Genre-fluid music blending electronic production with organic textures.", links: { sc: "stonestaro" }, from: "England", styles: "electronic, organic, genre-fluid", conf: 2 },
+
+    // ── AMAPIANO / GQOM / AFRO-ELECTRONIC ──
+    { name: "Menzi", genre: "afro", desc: "Gqom producer from South Africa. Raw, percussive, high-energy club music.", links: { sc: "menzi", dc: "6892498-Menzi" }, from: "Durban, South Africa", styles: "gqom, percussive, raw club", conf: 3 },
+    { name: "Toya Delazy", genre: "afro", desc: "South African pop and electronic artist. Genre-blending afro-electronic and pop.", links: { sc: "toyadelazy", ig: "toyadelazy", dc: "2832018-Toya-Delazy" }, from: "Durban, South Africa / London", styles: "afro-pop, electronic, genre-blending", conf: 3, since: 2012, releases: 10 },
+    { name: "Azu Tiwaline", genre: "afro", desc: "Algerian electronic and experimental producer. Desert-influenced textures and rhythms.", links: { sc: "azu-tiwaline", ig: "azutiwaline", dc: "5890498-Azu-Tiwaline" }, from: "Algeria / France", styles: "desert electronics, experimental, ambient dub", conf: 3 },
+    { name: "DJ Spinn", genre: "afro", desc: "Chicago footwork legend. Teklife crew. Juke and footwork pioneer.", links: { sc: "dj-spinn", dc: "525117-DJ-Spinn" }, from: "Chicago, USA", styles: "footwork, juke, ghetto house", conf: 3, since: 2005, releases: 25 },
+
+    // ── RESEARCHED ACTS (moved from unknown) ──
+
+    // DnB / Jungle additions
+    { name: "Cheetah", genre: "dnb", desc: "Bristol DJ and producer. Jungle revivalist making high-energy, booty-shaking breakbeat bangers.", links: { sc: "cheetahmusic" }, from: "Bristol, England", styles: "jungle, breakbeat, rave", conf: 2 },
+    { name: "Chinese Daughter", genre: "dnb", desc: "South London vinyl-only DJ. Swamp 81, Rinse FM, Kool FM. Jungle, DnB, and oldschool hardcore.", links: { sc: "leilachinesedaughter" }, from: "South London, England", styles: "jungle, vinyl-only, oldschool hardcore", conf: 3 },
+    { name: "Mantra", genre: "dnb", desc: "DnB DJ and producer. Co-founder of Rupture LDN and EQ50. Forward-thinking, inclusive drum & bass.", links: { sc: "mantra", dc: "4722751-Mantra-44" }, from: "London, England", styles: "dnb, jungle, forward-thinking", conf: 3 },
+    { name: "Paige Julia", genre: "dnb", desc: "New Zealand jungle and bass DJ. 1985 Music. Breakbeat-heavy, international bass selector.", links: { sc: "paigejulia" }, from: "New Zealand / London", styles: "jungle, bass, breakbeat", conf: 2 },
+    { name: "Amy Kisnorbo", genre: "dnb", desc: "Bristol producer and DJ. Rupture, Heavyweight. DnB and bass with a deeply personal touch.", links: { sc: "amykisnorbo", bc: "amykisnorbo" }, from: "Bristol, England", styles: "dnb, bass, personal", conf: 2 },
+    { name: "VXRGO", genre: "dnb", desc: "UK DJ and producer. Jungle, ragga jungle, and garage. Next generation of UK jungle.", links: { sc: "vxrgo" }, from: "England", styles: "jungle, ragga jungle, garage", conf: 2 },
+    { name: "Hijinx", genre: "dnb", desc: "UK DnB DJ and producer. Sub-heavy drum & bass.", links: {}, from: "England", styles: "dnb, sub-heavy", conf: 1 },
+    { name: "Nectax", genre: "dnb", desc: "DnB DJ and producer.", links: { sc: "nectax" }, from: "England", styles: "dnb", conf: 1 },
+    { name: "Melba", genre: "dnb", desc: "DnB selector.", links: {}, from: "England", styles: "dnb", conf: 1 },
+
+    // Dubstep / Deep Bass additions
+    { name: "CARRÉ", genre: "dubstep", desc: "Producer and DJ. Fast At Work label co-founder. LA via London. Future-facing dubstep and bass.", links: { sc: "carreo", bc: "carre-carre" }, from: "Los Angeles, USA / London", styles: "dubstep, future bass, 140", conf: 2 },
+    { name: "Cesco", genre: "dubstep", desc: "Bristol producer. Minimal DnB, 140, and UKG. Genre-fluid bass music that defies easy categorisation.", links: { sc: "cescomusic", dc: "7854648-Cesco-6" }, from: "Bristol, England", styles: "minimal dnb, 140, ukg, genre-fluid", conf: 3 },
+    { name: "Dangermami", genre: "dubstep", desc: "Berlin-based DJ and producer. Femme Bass Mafia founder. 140-170 mixing spanning dubstep to jungle.", links: { sc: "dangermami" }, from: "Berlin, Germany", styles: "140, dubstep, jungle, bass", conf: 2 },
+    { name: "Breakfake", genre: "dubstep", desc: "UK DJ and live performer. 140/dubstep, roots, reggae, dub, dancehall. Live dubbing sets.", links: { sc: "breakfake" }, from: "England", styles: "140, dub, roots, dancehall, live dub", conf: 2 },
+    { name: "Felixculpah", genre: "dubstep", desc: "Manchester DJ and label owner. All shades of UK bass from dubstep to jungle. Soundsystem culture.", links: { sc: "felixculpah" }, from: "Manchester, England", styles: "dubstep, jungle, soundsystem, uk bass", conf: 2 },
+    { name: "Soa420", genre: "dubstep", desc: "Nantes-based Franco-Malagasy DJ and producer. Dubstep and bass rooted in dancehall and reggae heritage.", links: { sc: "soa420" }, from: "Nantes, France / Madagascar", styles: "dubstep, dancehall, reggae, bass", conf: 2 },
+    { name: "Traka", genre: "dubstep", desc: "Belgrade-based duo. Leftfield bass, collaborations with Killa P and Warrior Queen. Remixed by Commodo.", links: { sc: "trakastudio", bc: "trakastudio", dc: "8409513-Traka-2" }, from: "Belgrade, Serbia", styles: "leftfield bass, 140, dub", conf: 3 },
+    { name: "Wraz", genre: "dubstep", desc: "Quebec-based producer. Deep, dark dubstep, DnB, and halftime. Analog synths and heavy grooves.", links: { sc: "wraz", bc: "wraz" }, from: "Quebec, Canada", styles: "deep dubstep, halftime, analog", conf: 2 },
+    { name: "Drone", genre: "dubstep", desc: "Bristol producer and DJ. Genre-crossing bass: grime, dubstep, garage. Sub-heavy, 808-laden sound.", links: { sc: "drone" }, from: "Bristol, England", styles: "grime, dubstep, garage, 808", conf: 2 },
+    { name: "Chefal", genre: "dubstep", desc: "aka DJ Chef. South London pioneering dubstep DJ. Croydon. One of pirate radio's biggest dubstep selectors.", links: { sc: "chefal" }, from: "Croydon, South London", styles: "dubstep, pirate radio, deep", conf: 2 },
+    { name: "Ophélie", genre: "dubstep", desc: "DJ and producer. Bass music. Releases on Bait.", links: {}, from: "France", styles: "bass, 140", conf: 1 },
+    { name: "Beatrice M.", genre: "dubstep", desc: "Bass selector. B2b with Pinch at Outlook.", links: {}, from: "England", styles: "bass, dubstep", conf: 1 },
+
+    // Grime additions
+    { name: "JayaHadADream", genre: "grime", desc: "UK rap and grime artist from Cambridge. Glastonbury Emerging Talent winner. Genre-hopping lyricism.", links: { sc: "jayahadadream", ig: "jayahadadream" }, from: "Cambridge, England", styles: "grime, uk rap, genre-hopping", conf: 3 },
+    { name: "Oldboy", genre: "grime", desc: "UK producer. Grime instrumentals, UKG, jungle. Grimey Ones series.", links: { sc: "oldboytrax", bc: "oldboytrax" }, from: "England", styles: "grime instrumentals, ukg, jungle", conf: 2 },
+    { name: "Blackeye MC", genre: "grime", desc: "Grime MC.", links: {}, from: "England", styles: "grime, mc", conf: 1 },
+    { name: "Rocks Foe", genre: "grime", desc: "Grime MC. Commodo collaborator.", links: {}, from: "England", styles: "grime, mc", conf: 1 },
+    { name: "MC Chickaboo", genre: "grime", desc: "MC.", links: {}, from: "England", styles: "mc", conf: 1 },
+    { name: "Scion", genre: "grime", desc: "MC. The Bug collaborator. Bass and grime vocals.", links: {}, from: "England", styles: "mc, bass, grime", conf: 1 },
+    { name: "Yungfya", genre: "grime", desc: "MC.", links: {}, from: "England", styles: "mc", conf: 1 },
+
+    // Soundsystem / Dub additions
+    { name: "Lioness Power", genre: "soundsystem", desc: "Leeds-based dub selectors. Promoting equality through the unifying power of dub.", links: { sc: "lionesspower" }, from: "Leeds, England", styles: "dub, roots, soundsystem", conf: 2 },
+    { name: "Ras Sherby", genre: "soundsystem", desc: "MC and selector. Channel One Sound System.", links: {}, from: "London, England", styles: "dub, roots, mc, soundsystem", conf: 2 },
+    { name: "Tikiman", genre: "soundsystem", desc: "Vocalist and MC. The Bug collaborator. Dub and ragga vocals.", links: {}, from: "England", styles: "dub, ragga, mc", conf: 2 },
+
+    // Techno / Electro / Experimental additions
+    { name: "Alicia", genre: "techno", desc: "London DJ, producer, and Terra Obscura co-founder. Expansive, emotionally dynamic sets. Rinse FM.", links: { sc: "aliciadj" }, from: "London, England", styles: "techno, bass, expansive", conf: 2 },
+    { name: "Babilonska", genre: "techno", desc: "Zagreb-based DJ. Experimental electronic, jazz, hip hop. Croatian experimental music champion.", links: {}, from: "Zagreb, Croatia", styles: "experimental, jazz, hip hop, electronic", conf: 2 },
+    { name: "Coido", genre: "techno", desc: "Netherlands-based producer. Bass and club music. Collaborator with Thys (Noisia). YUKU label.", links: { sc: "coido", bc: "coido" }, from: "Netherlands", styles: "bass, club, experimental", conf: 2 },
+    { name: "Opium Hum", genre: "techno", desc: "Berlin DJ and CTM Festival curator. Berghain. High-speed bass, breakcore, and experimental club.", links: { sc: "opiumhum" }, from: "Berlin, Germany", styles: "breakcore, experimental club, high-speed bass", conf: 2 },
+    { name: "Mia Koden", genre: "techno", desc: "South London producer and DJ. South Sudanese and British. Bass-driven electronics. Ilian Tape.", links: { sc: "miakoden", ig: "miakoden" }, from: "South London, England", styles: "bass electronics, ilian tape, textural", conf: 2 },
+    { name: "Josi Devil", genre: "techno", desc: "Bristol producer and DJ. Hessle Audio (HES047). UK bass and techno. Supported by Four Tet and Joy Orbison.", links: { sc: "josidevil", bc: "josidevil" }, from: "Bristol, England", styles: "uk bass, ukg, techno, hessle audio", conf: 3 },
+
+    // Breakbeat / Rave additions
+    { name: "Frazer Ray", genre: "breaks", desc: "Rinse FM DJ. Breaks, bass, garage, jungle, and everything in between. Locked On.", links: { sc: "frazer_ray", bc: "frazerray", dc: "8217015-Frazer-Ray" }, from: "London, England", styles: "breaks, bass, garage, jungle", conf: 3 },
+    { name: "Sexy Lady Massive", genre: "breaks", desc: "Ladies-only multi-genre rave and music collective. Safe, inclusive spaces. Boomtown alumni.", links: {}, from: "England", styles: "rave, multi-genre, collective", conf: 1 },
+    { name: "SKALA", genre: "breaks", desc: "Berlin producer, vocalist, and DJ. Classical piano meets electronic. Breakbeat and bass.", links: { sc: "skalamusic" }, from: "Berlin, Germany", styles: "breakbeat, bass, classical-electronic", conf: 2 },
+
+    // Club Music / Hybrid Bass additions
+    { name: "Amor Satyr", genre: "club", desc: "French DJ and producer. Cross-pollination of tribal techno, baile funk, dubstep, jungle, dancehall.", links: { sc: "amorsatyr", dc: "4473386-Amor-Satyr" }, from: "France", styles: "tribal, baile funk, dubstep, jungle, dancehall", conf: 2 },
+    { name: "Siu Mata", genre: "club", desc: "French DJ and producer. Dembow-infused bass, dancehall variations, jungle influences. Nervous Horizon.", links: { sc: "siumata", bc: "siumata" }, from: "France", styles: "dembow, dancehall, jungle, bass", conf: 2 },
+    { name: "D'monk", genre: "club", desc: "London instrumentalist, producer, and selector. Broken beat, funk, electro, beatdown. Touching Bass.", links: { sc: "dmonk", bc: "dmonk" }, from: "London, England", styles: "broken beat, funk, electro, beatdown", conf: 2 },
+    { name: "Darwin", genre: "club", desc: "DJ and label runner (SPE:C, REEF). Canada via London. Bass music across the spectrum.", links: { sc: "darwindj" }, from: "Canada / London", styles: "bass, dubstep, spectrum", conf: 2 },
+    { name: "Douvelle19", genre: "club", desc: "Newport-raised Welsh producer. Genre-bending bass, grime, UKG influences. Locally Sauced night in Cardiff.", links: { sc: "douvelle19", dc: "10423504-Douvelle19" }, from: "Newport, Wales", styles: "bass, grime, ukg, genre-bending", conf: 3 },
+    { name: "G33", genre: "club", desc: "Liverpool-based DJ (from Brixton). Girls Don't Sync. UK funky, folk-influenced, eclectic club.", links: { sc: "gggeethreethree" }, from: "Brixton / Liverpool, England", styles: "uk funky, eclectic, folk-influenced", conf: 2 },
+    { name: "Jaz Imsky", genre: "club", desc: "Singapore-born, London-raised DJ and producer. Genre-fluid, no set playlist. Open-minded selections.", links: { sc: "jazimsky", bc: "jazimsky" }, from: "Singapore / London", styles: "genre-fluid, eclectic, club", conf: 2 },
+    { name: "JIALING", genre: "club", desc: "Baltimore-based Taiwanese-American DJ. Percussive club workouts, funky breaks, trippy techno.", links: { sc: "jialing", bc: "jialing" }, from: "Baltimore, USA / Taiwan", styles: "percussive club, funky breaks, techno", conf: 2 },
+    { name: "Manami", genre: "club", desc: "Tokyo-born, London-based DJ and producer. Dark, murky bass depths. Euphoric club energy.", links: { sc: "manamidj" }, from: "Tokyo, Japan / London", styles: "dark bass, club, euphoric", conf: 2 },
+    { name: "Séverine", genre: "club", desc: "Long Beach DJ and producer. Genre-crossing bass. Club Paradiso.", links: { sc: "s3v3r1n333" }, from: "Long Beach, USA", styles: "bass, genre-crossing, club", conf: 2 },
+    { name: "Donsurf", genre: "club", desc: "Manchester/Leeds producer and DJ. Broken beat, house, garage, soulful UK bass. Rinse FM.", links: { sc: "donsurf", bc: "donsurf" }, from: "Manchester / Leeds, England", styles: "broken beat, house, garage, soulful", conf: 2 },
+    { name: "Raji Rags", genre: "club", desc: "London DJ and producer. NTS, Bleep, Boiler Room. Eclectic electronic, footwork, DnB, bass. OTIH Records.", links: { sc: "rajirags", bc: "rajirags", dc: "7876571-Raji-Rags" }, from: "London, England", styles: "eclectic, footwork, dnb, bass", conf: 3 },
+    { name: "Asian Brat", genre: "club", desc: "West London DJ. 140-180bpm bass music.", links: { sc: "as1anbrat", ig: "as1anbrat" }, from: "West London, England", styles: "bass, 140-180bpm", conf: 2 },
+    { name: "Rich Reason", genre: "club", desc: "DJ and promoter. Hit&Run. Bass music selector.", links: { sc: "richreason" }, from: "England", styles: "bass, promoter", conf: 1 },
+    { name: "YAMI", genre: "club", desc: "UK DJ. Club and bass selections. Wide-ranging from UK club culture.", links: {}, from: "England", styles: "club, bass, uk", conf: 1 },
+
+    // UK Garage / 2-Step additions
+    { name: "Silva Bumpa", genre: "ukg", desc: "Sheffield producer. UK garage and bass. Grit of UK bass with bounce of club classics. Locked On.", links: { sc: "silvabumpa", bc: "silvabumpa", dc: "11143466-Silva-Bumpa" }, from: "Sheffield, England", styles: "uk garage, bass, club classics", conf: 3 },
+    { name: "Krotone", genre: "ukg", desc: "Leeds-based producer. Garage, breaks, grime, techno fusion. A decade deep in UK bass history.", links: { sc: "krotone", bc: "krotone", dc: "5789190-Krotone" }, from: "Leeds, England", styles: "garage, breaks, grime, techno", conf: 3 },
+    { name: "Osmosis Jones", genre: "ukg", desc: "Melbourne-based UK garage DJ and producer. INTHEHOUSE Records.", links: { sc: "osmosisjones1er", bc: "djosmosisjones" }, from: "Melbourne, Australia", styles: "uk garage, 2-step", conf: 2 },
+
+    // Amapiano / Gqom / Afro-Electronic additions
+    { name: "State Offf", genre: "afro", desc: "Zimbabwe-born, Amsterdam-based. Gqom, baile funk, Baltimore club, London basslines. Hard Currency.", links: { sc: "state-offf", bc: "stateofff" }, from: "Zimbabwe / Amsterdam, Netherlands", styles: "gqom, baile funk, baltimore club, bassline", conf: 2 },
+
+    // ── SECOND WAVE RESEARCHED ACTS ──
+
+    // DnB / Jungle
+    { name: "Decibella", genre: "dnb", desc: "London DJ and producer. Rupture, AKO Beatz. Jungle, DnB, breakbeat, and hardcore.", links: { sc: "djdecibella" }, from: "London, England", styles: "jungle, dnb, breakbeat, hardcore", conf: 3 },
+    { name: "Fez the Kid", genre: "dnb", desc: "Bristol producer. Modern jungle, AKO Beatz. Ragga hooks and rave-ready breakbeats.", links: { sc: "fezthekid" }, from: "Bristol, England", styles: "modern jungle, ragga, rave", conf: 3 },
+    { name: "Dwarde", genre: "dnb", desc: "UK producer and DJ. Jungle, hardcore, breakbeat. Tim Reaper collaborator. Ilian Tape, Sneaker Social Club.", links: { sc: "dwarde", dc: "3215522-Dwarde" }, from: "England", styles: "jungle, hardcore, breakbeat", conf: 3 },
+
+    // Dubstep / Deep Bass
+    { name: "Phossa", genre: "dubstep", desc: "Bristol UK bass producer. 140, dubstep, grime, trap. Panel label. FKOF Records.", links: { sc: "phossa", bc: "phossa" }, from: "Bristol, England", styles: "140, dubstep, grime, trap", conf: 2 },
+    { name: "Just Jane", genre: "dubstep", desc: "Paris-born, South London-raised. Dubstep, grime, bass/techno fusion. Weightless low-end.", links: { sc: "justjaneuk" }, from: "Paris / South London", styles: "dubstep, grime, bass-techno", conf: 2 },
+    { name: "Axle", genre: "dubstep", desc: "Bristol-based producer. OG dubstep steppers. SPE:C label. Dark, deep 140.", links: { sc: "axlesound", bc: "axlesound" }, from: "Bristol, England", styles: "dubstep steppers, 140, dark", conf: 2 },
+    { name: "Bamboy", genre: "dubstep", desc: "Mumbai-based producer, DJ, and emcee (aka Kaali Duniya). Bass music rooted in Dalit politics.", links: { sc: "bamboy" }, from: "Mumbai, India", styles: "bass, dubstep, emcee, political", conf: 2 },
+    { name: "Kaali Duniya", genre: "dubstep", desc: "Mumbai producer and MC (aka BamBoy). Deep dubstep. Bass as storytelling. Babylon's Camp.", links: { sc: "tushar-adhav-285451321", bc: "kaaliduniya" }, from: "Mumbai, India", styles: "deep dubstep, bass, storytelling", conf: 3 },
+    { name: "Nio-B", genre: "dubstep", desc: "DJ. Bassline, dubstep, and grime.", links: {}, from: "London, England", styles: "bassline, dubstep, grime", conf: 1 },
+    { name: "Duppy", genre: "grime", desc: "South London grime producer and artist.", links: { sc: "artisticduppy", bc: "artisticduppy" }, from: "South London, England", styles: "grime, production", conf: 2 },
+
+    // Grime
+    { name: "kruz leone", genre: "grime", desc: "South East London MC. Rising grime star with flamboyant style and animated stage presence.", links: { sc: "kruzleone", bc: "kruzleone" }, from: "South East London, England", styles: "grime, mc, animated", conf: 2 },
+    { name: "Chamber45", genre: "grime", desc: "South East London artist, producer, and DJ. Grime-rooted. Rinse FM.", links: { sc: "chamber45" }, from: "South East London, England", styles: "grime, production", conf: 2 },
+
+    // Soundsystem / Dub
+    { name: "Kibir La Amiak", genre: "soundsystem", desc: "Dub producer. Roots-influenced. Commodo rework collaborator with Marysia Osu.", links: {}, from: "England", styles: "dub, roots", conf: 1 },
+
+    // Techno / Electro / Experimental
+    { name: "livwutang", genre: "techno", desc: "NYC-based DJ (Denver via Seattle). Brooding, trance-like club music. Dekmantel. Nowadays.", links: { sc: "livwutang" }, from: "New York, USA", styles: "trance-like club, brooding, dekmantel", conf: 2 },
+    { name: "Tasha", genre: "techno", desc: "UK DJ. DnB roots meets techno. Berghain, Rupture, Neighbourhood. Ilian Tape. Genre-defying.", links: { sc: "tashadj" }, from: "England", styles: "techno, dnb, genre-defying", conf: 2 },
+    { name: "Arnii", genre: "techno", desc: "Georgia-born, Prague-based DJ. UK-infused techno, hard house, bass, experimental club.", links: { sc: "arnii" }, from: "Georgia / Prague, Czechia", styles: "techno, hard house, bass, experimental", conf: 2 },
+    { name: "Bugs Groove", genre: "techno", desc: "Leeds/Bristol DJ. OST club night founder. NWB collective. Underground techno.", links: { sc: "bugsgroove" }, from: "Leeds / Bristol, England", styles: "underground techno", conf: 1 },
+    { name: "Henry Greenleaf", genre: "techno", desc: "London DJ and producer. NTS, Noods Radio. Leftfield bass, experimental electronics.", links: { sc: "henry-greenleaf" }, from: "London, England", styles: "leftfield bass, experimental electronics", conf: 2 },
+    { name: "Olgica", genre: "techno", desc: "Serbia-born, Austria-based DJ. Left field bass, dub, broken techno, experimental downtempo.", links: { sc: "olgica23" }, from: "Serbia / Austria", styles: "left field bass, dub, broken techno, downtempo", conf: 2 },
+    { name: "Oolongbru", genre: "techno", desc: "YUKU label co-founder. Electronic music producer.", links: {}, from: "Netherlands", styles: "electronic, bass", conf: 1 },
+    { name: "Jay Carder", genre: "techno", desc: "London DJ and producer. Techno, bass, jungle, breaks. Faux Poly, Wisdom Teeth, Neighbourhood.", links: { sc: "jaycarder", bc: "jaycarder" }, from: "London, England", styles: "techno, bass, jungle, breaks", conf: 3 },
+
+    // Breakbeat / Rave
+    { name: "Fujita Pinnacle", genre: "breaks", desc: "Slovenian DJ and producer. Breaks, ambient. Capsule Berlin.", links: { sc: "fujitapinnacle", bc: "fujitapinnacle" }, from: "Slovenia / Berlin", styles: "breaks, ambient", conf: 2 },
+    { name: "Mia Lily", genre: "breaks", desc: "Northern-raised, London-based DJ and producer. Bass, techno, trance, breakbeat, 90s rave. Boomtown, Outlook. Shall Not Fade.", links: { sc: "mialily", bc: "mialily" }, from: "Northern England / London", styles: "bass, techno, trance, breakbeat, 90s rave", conf: 3 },
+
+    // Club Music / Hybrid Bass
+    { name: "Ben Sleia", genre: "club", desc: "France-born, Liverpool-based DJ. 24 Kitchen St resident. ATHE party series. Bass and left-field.", links: { sc: "bensleia" }, from: "France / Liverpool, England", styles: "bass, left-field", conf: 2 },
+    { name: "BexBlu", genre: "club", desc: "Bexleyheath UK producer and DJ. Hip-hop sampling, bass. Influenced by J Dilla, Madlib, MF DOOM.", links: { sc: "bexblu", bc: "bexblu" }, from: "Bexleyheath, England", styles: "hip-hop, bass, sampling, beats", conf: 2 },
+    { name: "CCL", genre: "club", desc: "Berlin-via-Seattle-via-Bristol DJ, producer, and curator. Subglow label. Bass, dub, psychedelic electronics.", links: { sc: "ccl-music" }, from: "Berlin / Seattle / Bristol", styles: "bass, dub, psychedelic electronics", conf: 2 },
+    { name: "EZ Riser", genre: "club", desc: "Mumbai-based DJ and producer. Glitch-hop, electronica, bass. Bass Coast Festival.", links: { sc: "ezriser" }, from: "Mumbai, India", styles: "glitch-hop, electronica, bass", conf: 2 },
+    { name: "Betsy Mae", genre: "club", desc: "DJ. Bass and club selections.", links: {}, from: "England", styles: "bass, club", conf: 1 },
+
+    // Jazz / Live
+    { name: "Marysia Osu", genre: "jazz", desc: "Polish-born harpist and producer. Classical, jazz, ambient, electronic. 'Harp, beats and dreams.' Brownswood Recordings. Levitation Orchestra.", links: { sc: "marysiaosu", bc: "marysiaosu" }, from: "Poland / London, England", styles: "harp, jazz, ambient, electronic", conf: 3 },
+    { name: "Salo", genre: "jazz", desc: "Georgian singer, songwriter, pianist, DJ, and producer. Jazz, soul, DnB crossover. Manchester-based.", links: { sc: "salomcr" }, from: "Georgia / Manchester, England", styles: "jazz, soul, dnb crossover, piano", conf: 3 },
+
+    // ── THIRD WAVE RESEARCHED ACTS ──
+
+    // DnB / Jungle
+    { name: "Daisy", genre: "dnb", desc: "DJ. Bass selections.", links: { sc: "djdaisy-b" }, from: "England", styles: "bass", conf: 1 },
+
+    // Dubstep / Deep Bass
+    { name: "Big Kani", genre: "dubstep", desc: "Producer. Bass and breaks. LC label.", links: { sc: "bigkani", bc: "bigkani" }, from: "England", styles: "bass, breaks", conf: 1 },
+
+    // Grime
+    { name: "Si*bl", genre: "grime", desc: "DJ.", links: { sc: "siblthedj" }, from: "England", styles: "grime", conf: 1 },
+
+    // Soundsystem / Dub / Roots
+    { name: "Dr. Obi & Anja G", genre: "soundsystem", desc: "Croatian dub duo. AmpliFyah Music. Roots reggae, dub, and soundsystem culture.", links: { bc: "amplifyah" }, from: "Croatia", styles: "roots reggae, dub, soundsystem", conf: 2 },
+    { name: "Sistah Tena", genre: "soundsystem", desc: "MC and vocalist. AmpliFyah Music crew with Dr. Obi & Anja G. Dub and reggae.", links: {}, from: "Croatia", styles: "dub, reggae, mc", conf: 2 },
+    { name: "Root", genre: "soundsystem", desc: "DJ. AmpliFyah Music crew. Dub and roots selections.", links: {}, from: "Croatia", styles: "dub, roots", conf: 1 },
+
+    // Techno / Electro / Experimental
+    { name: "EMA", genre: "techno", desc: "Dublin-based DJ and Woozy founder. Low-end frequencies and forward-thinking club culture.", links: {}, from: "Dublin, Ireland", styles: "bass, forward-thinking club, low-end", conf: 2 },
+    { name: "Marylou", genre: "techno", desc: "French, Berlin-based DJ. Morphine Raum affiliate. Improv jazz, noise, footwork, breakcore, bass, dub.", links: { sc: "maryloudj" }, from: "France / Berlin, Germany", styles: "improv jazz, noise, footwork, breakcore, dub", conf: 2 },
+    { name: "Yaw Evans", genre: "techno", desc: "London producer. Bass-driven electronics. Releases on Gd4Ya (El-B's label), Hodge-adjacent.", links: { sc: "yaw-evans-298799935", bc: "yawevans" }, from: "London, England", styles: "bass electronics, garage-adjacent", conf: 2 },
+
+    // Club Music / Hybrid Bass
+    { name: "KIBO", genre: "club", desc: "Mumbai-based DJ. House music at her core, blending disco, jazz, and deep electronic grooves.", links: {}, from: "Mumbai, India", styles: "house, disco, jazz, deep electronic", conf: 2 },
+    { name: "Kumquat Tang", genre: "club", desc: "YUKU label co-curator alongside Oolongbru. Electronic music.", links: { sc: "kumquat-tang" }, from: "Netherlands", styles: "electronic, bass", conf: 1 },
+    { name: "Yung.Raj", genre: "club", desc: "Hyderabad-based beatboxer, producer, and DJ. Wide-spectrum bass and electronic explorations.", links: { sc: "yung_raj", bc: "yungraj" }, from: "Hyderabad, India", styles: "bass, electronic, beatbox", conf: 2 },
+    { name: "Rishi", genre: "club", desc: "Mumbai-based DJ. Electronic and bass music.", links: { sc: "officialdjrishi" }, from: "Mumbai, India", styles: "electronic, bass", conf: 1 },
+
+    // UK Garage / 2-Step
+    { name: "Saidah", genre: "ukg", desc: "Amsterdam-based DJ with London roots. UKG classics meets underground garage, house, and bassline.", links: { sc: "saidahsounds" }, from: "Amsterdam, Netherlands / London", styles: "ukg, garage, house, bassline", conf: 2 },
+
+    // ── FOURTH WAVE RESEARCHED ACTS ──
+
+    // Dubstep / Deep Bass
+    { name: "Glüme", genre: "dubstep", desc: "UK dubstep producer. Releases with Phossa on Deep Medi and White Peach. 140 and bass.", links: { sc: "glumeuk" }, from: "England", styles: "140, dubstep, deep medi, white peach", conf: 3 },
+    { name: "Yoofee", genre: "dubstep", desc: "Dubstep producer. Off-kilter rhythms, intelligent basslines. Sub Garden, White Peach, Albion Collective.", links: { sc: "yoofee" }, from: "England", styles: "dubstep, off-kilter, intelligent bass", conf: 2 },
+
+    // Techno / Experimental
+    { name: "Midrib", genre: "techno", desc: "London-based producer. Experimental dystopian sound worlds of rave and dub.", links: { sc: "midrib22", bc: "midrib22" }, from: "London, England", styles: "experimental, dystopian, rave, dub", conf: 2 },
+
+    // Club Music / Hybrid Bass
+    { name: "Basic Chanel", genre: "club", desc: "London-based DJ. Untitled 909 founder. Resident at Refuge Worldwide and Netil Radio.", links: { sc: "basicchanel" }, from: "London, England", styles: "club, eclectic, bass", conf: 2 },
+    { name: "Guns", genre: "club", desc: "Turkish-Austrian-London DJ. Classically trained pianist. Dubstep, bass, DnB. Alt:lab founder.", links: { sc: "gunselsenol" }, from: "Turkey / Austria / London", styles: "dubstep, bass, dnb, classical", conf: 2 },
+    { name: "Patricccio", genre: "club", desc: "DJ. Shella Radio co-founder. Sentimental club music.", links: { sc: "patricccio" }, from: "England", styles: "club, sentimental", conf: 1 },
+    { name: "Peroli", genre: "club", desc: "DJ. Brasil grime connections. Connector and selector.", links: { sc: "peroli" }, from: "Brazil / England", styles: "grime, bass, selector", conf: 1 },
+    { name: "SHARARI", genre: "club", desc: "DJ. Calm, fun, and dance music selections.", links: { sc: "sophiaharari" }, from: "England", styles: "club, dance, eclectic", conf: 1 },
+
+    // ── FIFTH WAVE RESEARCHED ACTS ──
+
+    // DnB / Jungle
+    { name: "GLM", genre: "dnb", desc: "Bristol-based DnB producer and DJ. Tune support from Noisia, Alix Perez, Skeptical, Grooverider, Ray Keith.", links: { sc: "george-ley-morgan" }, from: "Bristol, England", styles: "dnb, bass, production", conf: 2 },
+    { name: "Khxdeej", genre: "dnb", desc: "DJ. Jungle, liquid DnB. Boiler Room (Goa). Rinse FM adjacent.", links: { sc: "khadija-imadi" }, from: "India / England", styles: "jungle, liquid dnb", conf: 2 },
+    { name: "Jolie P", genre: "dnb", desc: "London-based MC, vocalist, and jungle/DnB/garage/house DJ.", links: { sc: "whoisjolie" }, from: "London, England", styles: "mc, jungle, dnb, garage, house", conf: 2 },
+
+    // Grime
+    { name: "Strategy", genre: "grime", desc: "Manchester MC. Levelz collective, Dub Phizix collaborator, Estate Recordings. Broke'N'English member.", links: {}, from: "Salford / Manchester, England", styles: "grime, mc, dnb mc, manchester bass", conf: 3 },
+
+    // Breaks / Rave
+    { name: "Louise+1 & Hughesee", genre: "breaks", desc: "Distant Planet co-founders. Acid house, oldschool hardcore, techno, and jungle. 90s UK rave revivalists.", links: {}, from: "London, England", styles: "acid house, oldschool hardcore, techno, jungle", conf: 3 },
+
+    // Club / Hybrid Bass
+    { name: "YAN", genre: "club", desc: "Manchester-based, Hong Kong-rooted DJ. Bass music. Soul In Motion. Bloc2bloc to international stages.", links: {}, from: "Manchester, England / Hong Kong", styles: "bass, club, uk bass", conf: 2 },
+
+    // Dubstep / Bass
+    { name: "yungfya", genre: "dubstep", desc: "Berlin-based DJ and producer. Seismic low-end selections. Origins Sound. Outlook, Dekmantel adjacent.", links: { sc: "yungfya" }, from: "Berlin, Germany", styles: "dubstep, bass, seismic, low-end", conf: 2 },
+
+    // ── SIXTH WAVE RESEARCHED ACTS ──
+
+    // Dubstep
+    { name: "Samba", genre: "dubstep", desc: "Dubstep producer. Deep Medi Musik (Mala's label). Strong, modern dubstep.", links: { sc: "saamba", bc: "samba" }, from: "England", styles: "deep dubstep, modern dubstep, deep medi", conf: 3 },
+
+    // DnB
+    { name: "Archangel", genre: "dnb", desc: "Mysterious DnB producer. Guitar-driven jungle and drum & bass. Fokuz Records. Based in Portugal.", links: {}, from: "Portugal", styles: "guitar dnb, jungle, melodic, atmospheric", conf: 2 },
+
+    // Club / Hybrid Bass
+    { name: "Ralph", genre: "club", desc: "UK DJ. NTS, fabric, Balamii, Reprezent Radio. Bi-weekly shows.", links: { sc: "ralph_uk" }, from: "England", styles: "club, bass, eclectic", conf: 2 },
+
+    // Soundsystem / Dub
+    { name: "Hanamercy", genre: "soundsystem", desc: "Dub and roots selector. Bandcamp supporter of Iration Steppas, Danny T, Toroki. Soundsystem culture.", links: {}, from: "England", styles: "dub, roots, soundsystem", conf: 1 },
+
+    // Techno / Experimental
+    { name: "Simon Scott", genre: "techno", desc: "Outlook/Dimensions programmer and DJ. Tribe Records, Leeds. Om Unit collaborator. Bass, psychedelic, downtempo.", links: { sc: "simonexodusscott" }, from: "Leeds, England", styles: "bass, psychedelic, downtempo, chill", conf: 2 },
+    { name: "Yuko A.", genre: "techno", desc: "Berlin-based DJ. Room 4 Resistance resident (as Yuko Asanuma). Queer-forward electronic collective.", links: {}, from: "Berlin, Germany", styles: "techno, experimental, queer-forward", conf: 2 },
+
+    // ── REMAINING ACTS (truly minimal web presence) ──
+    { name: "Batki", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+    { name: "Cola B", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+    { name: "Hendy", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+    { name: "Kisa", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+    { name: "Selectacee", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+    { name: "Logan", genre: "unknown", desc: "", links: {}, from: "", styles: "", conf: 1 },
+];
+
+// Remove duplicate Manga Saint Hilare (was listed twice)
+const seen = new Set();
+const uniqueActs = acts.filter(a => {
+    if (seen.has(a.name)) return false;
+    seen.add(a.name);
+    return true;
+});
+
+// ── SVG ICONS (inline, tiny) ──
+const ICONS = {
+    sc: `<svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.282c.013.06.045.094.104.094.057 0 .09-.037.104-.094l.199-1.282-.199-1.332c-.014-.057-.047-.094-.104-.094m1.838-.744c-.064 0-.104.044-.11.11l-.199 2.07.199 2.016c.006.064.046.106.11.106.065 0 .104-.042.112-.106l.227-2.016-.227-2.07c-.008-.066-.047-.11-.112-.11m.789-.186c-.074 0-.112.05-.121.12l-.174 2.142.174 2.03c.01.073.047.12.121.12.074 0 .112-.047.12-.12l.199-2.03-.199-2.142c-.008-.073-.046-.12-.12-.12m.818-.088c-.084 0-.121.058-.129.13l-.148 2.216.148 2.03c.008.074.045.13.129.13.082 0 .121-.056.13-.13l.168-2.03-.168-2.216c-.009-.074-.048-.13-.13-.13m.83-.1c-.09 0-.133.06-.14.137l-.124 2.303.124 2.02c.007.077.05.137.14.137s.132-.06.14-.137l.14-2.02-.14-2.303c-.008-.077-.05-.137-.14-.137m.81.03c-.1 0-.144.073-.15.15l-.1 2.22.1 1.98c.006.083.05.15.15.15.1 0 .144-.067.15-.15l.115-1.98-.115-2.22c-.006-.077-.05-.15-.15-.15m.87-.163c-.11 0-.156.078-.16.16L6.91 14.38l.074 1.94c.004.083.05.16.16.16.108 0 .155-.077.16-.16l.084-1.94-.084-2.398c-.005-.082-.052-.16-.16-.16m.82.04c-.112 0-.164.082-.17.17l-.053 2.188.053 1.9c.006.09.058.17.17.17.11 0 .163-.08.17-.17l.063-1.9-.062-2.188c-.007-.088-.06-.17-.17-.17m3.348-1.27c-.18 0-.2.016-.36.032a4.854 4.854 0 00-4.57-3.19c-.48 0-.947.09-1.382.253-.163.06-.206.124-.206.245v8.58c0 .13.092.236.214.25h6.304a2.36 2.36 0 002.358-2.358 2.36 2.36 0 00-2.358-2.358"/></svg>`,
+    bc: `<svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>`,
+    ig: `<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`,
+    yt: `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+    sp: `<svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>`,
+    dc: `<svg viewBox="0 0 24 24"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.078 4.8h2.172c3.733 0 6.078 2.86 6.078 7.2s-2.345 7.2-6.078 7.2h-2.172V4.8zm2.172 12.6c2.494 0 3.878-2.094 3.878-5.4s-1.384-5.4-3.878-5.4h-.372v10.8h.372z"/></svg>`,
+    mb: `<svg viewBox="0 0 24 24"><path d="M0 1.418v21.164h24V1.418zm1.2 1.2h21.6v18.764H1.2zM4.39 5.478a2.71 2.71 0 00-1.905.816v-.676H1.4v8.624h1.2V9.67a1.89 1.89 0 011.623-1.923A1.552 1.552 0 015.91 9.42v4.822h1.2V9.22a2.553 2.553 0 00-2.72-3.742zm8.063 0c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624h5.76v-.7c0-2.12-1.362-3.804-3.38-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484H9.97c.1-1.5.99-2.484 2.38-2.484zM19.6 5.478c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624H22.8v-.7c-.06-2.06-1.362-3.804-3.2-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484h-4.66c.1-1.5.99-2.484 2.38-2.484z"/></svg>`,
+};
+
+function buildLinks(act) {
+    const q = encodeURIComponent(act.name);
+    const l = act.links || {};
+    return {
+        soundcloud: l.sc ? (l.sc.startsWith("http") ? l.sc : `https://soundcloud.com/${l.sc}`) : `https://soundcloud.com/search?q=${q}`,
+        bandcamp: l.bc ? (l.bc.startsWith("http") ? l.bc : `https://${l.bc}.bandcamp.com`) : `https://bandcamp.com/search?q=${q}`,
+        instagram: l.ig ? `https://instagram.com/${l.ig}` : null,
+        youtube: l.yt ? (l.yt.startsWith("http") ? l.yt : `https://youtube.com/${l.yt}`) : `https://www.youtube.com/results?search_query=${q}`,
+        spotify: l.sp ? (l.sp.startsWith("http") ? l.sp : `https://open.spotify.com/search/${q}`) : `https://open.spotify.com/search/${q}`,
+        discogs: l.dc ? (l.dc.startsWith("http") ? l.dc : `https://www.discogs.com/artist/${l.dc}`) : `https://www.discogs.com/search/?q=${q}&type=artist`,
+        musicbrainz: l.mb ? (l.mb.startsWith("http") ? l.mb : `https://musicbrainz.org/artist/${l.mb}`) : `https://musicbrainz.org/search?query=${q}&type=artist`,
+    };
+}
+
+function confidenceTicks(level) {
+    if (level >= 3) return '<span class="confidence" title="High confidence: verified links and description">&#10003;&#10003;&#10003;</span>';
+    if (level === 2) return '<span class="confidence" title="Medium confidence: some links unverified">&#10003;&#10003;</span>';
+    return '<span class="confidence" title="Low confidence: minimal info found">&#10003;</span>';
+}
+
+function renderCard(act) {
+    const links = buildLinks(act);
+    const g = GENRES[act.genre] || GENRES.unknown;
+    const l = act.links || {};
+    const lc = (svc, confirmed) => `lnk-${svc}${confirmed ? '' : ' lnk-search'}`;
+    const linksHtml = [
+        `<a class="${lc('sc', l.sc)}" href="${links.soundcloud}" target="_blank" rel="noopener">${ICONS.sc}SC</a>`,
+        `<a class="${lc('bc', l.bc)}" href="${links.bandcamp}" target="_blank" rel="noopener">${ICONS.bc}BC</a>`,
+        links.instagram ? `<a class="${lc('ig', true)}" href="${links.instagram}" target="_blank" rel="noopener">${ICONS.ig}IG</a>` : '',
+        `<a class="${lc('yt', l.yt)}" href="${links.youtube}" target="_blank" rel="noopener">${ICONS.yt}YT</a>`,
+        `<a class="${lc('sp', l.sp && l.sp.startsWith('http'))}" href="${links.spotify}" target="_blank" rel="noopener">${ICONS.sp}SP</a>`,
+        `<a class="${lc('dc', l.dc)}" href="${links.discogs}" target="_blank" rel="noopener">${ICONS.dc}DC</a>`,
+        `<a class="${lc('mb', l.mb)}" href="${links.musicbrainz}" target="_blank" rel="noopener">${ICONS.mb}MB</a>`,
+    ].filter(Boolean).join('');
+
+    // Derive genre from subgenre field or first item in styles
+    const subgenre = act.subgenre || (act.styles ? act.styles.split(',')[0].trim() : '');
+    const umbrellaHtml = `<span class="genre-tag" style="background:${g.color}">${g.label}</span>`;
+    const genreHtml = subgenre ? `<span class="act-label">genre:</span> ${subgenre}` : '';
+    const stylesHtml = act.styles ? `<span class="act-label">styles:</span> ${act.styles}` : '';
+
+    const conf = confidenceTicks(act.conf || 1);
+
+    return `<div class="act-card">
+        <div class="act-top">
+            <h3>${act.name}</h3>
+            <div class="act-taxonomy">
+                <div class="act-field">${umbrellaHtml}</div>
+                ${genreHtml ? `<div class="act-field">${genreHtml}</div>` : ''}
+                ${stylesHtml ? `<div class="act-field">${stylesHtml}</div>` : ''}
+            </div>
+        </div>
+        <p class="desc">${act.desc}</p>
+        <div class="act-bottom">
+            <div class="act-meta">
+                <span class="act-field"><span class="act-label">info:</span>${conf}</span>
+                ${act.from ? `<span class="act-field"><span class="act-label">from:</span> ${act.from}</span>` : ''}
+                ${act.since ? `<span class="act-field"><span class="act-label">since:</span> ${act.since}</span>` : ''}
+                ${act.releases ? `<span class="act-field"><span class="act-label">releases:</span> ${act.releases}</span>` : ''}
+            </div>
+            <div class="links">${linksHtml}</div>
+        </div>
+    </div>`;
+}
+
+function render() {
+    const lineup = document.getElementById('lineup');
+    const todoList = document.getElementById('todo-list');
+    const todoStats = document.getElementById('todo-stats');
+
+    const described = uniqueActs.filter(a => a.desc);
+    const todo = uniqueActs.filter(a => !a.desc);
+
+    // TODO section
+    const stored = JSON.parse(localStorage.getItem('oo2026-todo') || '{}');
+    todoStats.textContent = `${todo.length} acts need descriptions and link verification`;
+    todoList.innerHTML = todo.map(a => {
+        const checked = stored[a.name] ? 'checked' : '';
+        return `<label><input type="checkbox" data-name="${a.name}" ${checked}> ${a.name}</label>`;
+    }).join('');
+
+    todoList.addEventListener('change', e => {
+        if (e.target.type === 'checkbox') {
+            const s = JSON.parse(localStorage.getItem('oo2026-todo') || '{}');
+            s[e.target.dataset.name] = e.target.checked;
+            localStorage.setItem('oo2026-todo', JSON.stringify(s));
+        }
+    });
+
+    // Group described acts by genre
+    const genreOrder = Object.keys(GENRES).filter(g => g !== 'unknown');
+    genreOrder.push('unknown');
+    const grouped = {};
+    for (const a of described) {
+        if (!grouped[a.genre]) grouped[a.genre] = [];
+        grouped[a.genre].push(a);
+    }
+
+    // Restore fold state
+    const foldState = JSON.parse(localStorage.getItem('oo2026-folds') || '{}');
+
+    let html = '';
+    for (const g of genreOrder) {
+        if (!grouped[g] || grouped[g].length === 0) continue;
+        const info = GENRES[g];
+        const isFolded = foldState[g] === true;
+        const foldedH = isFolded ? ' collapsed' : '';
+        html += `<section class="genre-section" data-genre="${g}">
+            <h2 class="${foldedH}"><span class="dot" style="background:${info.color}"></span>${info.label} <span class="genre-count">(${grouped[g].length})</span><span class="fold-arrow">\u25BC</span></h2>
+            <div class="acts-grid${isFolded ? ' collapsed' : ''}">${grouped[g].map(renderCard).join('')}</div>
+        </section>`;
+    }
+    lineup.innerHTML = html;
+
+    // Bind fold toggles
+    lineup.querySelectorAll('.genre-section h2').forEach(h2 => {
+        h2.addEventListener('click', () => {
+            h2.classList.toggle('collapsed');
+            const grid = h2.nextElementSibling;
+            grid.classList.toggle('collapsed');
+            const genre = h2.closest('.genre-section').dataset.genre;
+            const fs = JSON.parse(localStorage.getItem('oo2026-folds') || '{}');
+            fs[genre] = grid.classList.contains('collapsed');
+            localStorage.setItem('oo2026-folds', JSON.stringify(fs));
+        });
+    });
+
+    assignCorners();
+}
+
+// ── CHECKERBOARD CORNERS ──
+function assignCorners() {
+    document.querySelectorAll('.acts-grid').forEach(grid => {
+        const cards = grid.querySelectorAll('.act-card');
+        if (!cards.length) return;
+        const style = getComputedStyle(grid);
+        const cols = style.gridTemplateColumns ? style.gridTemplateColumns.split(' ').length : 1;
+        cards.forEach((card, i) => {
+            const row = Math.floor(i / cols);
+            const col = i % cols;
+            const isA = (row + col) % 2 === 0;
+            card.classList.remove('corner-a', 'corner-b');
+            card.classList.add(isA ? 'corner-a' : 'corner-b');
+        });
+    });
+}
+window.addEventListener('resize', assignCorners);
+
+// ── COUNTDOWN TIMER ──
+function updateCountdown() {
+    const target = new Date('2026-07-23T12:00:00+02:00');
+    const now = new Date();
+    const diff = target - now;
+    const el = document.getElementById('countdown');
+    if (diff <= 0) { el.innerHTML = '<span style="color:var(--accent);font-weight:700;font-size:1.2rem">The festival has begun</span>'; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.innerHTML = [
+        ['num', d, 'days'], ['num', h, 'hrs'], ['num', m, 'min'], ['num', s, 'sec']
+    ].map(([cls, val, lbl]) => `<div class="countdown-unit"><div class="${cls}">${String(val).padStart(2,'0')}</div><div class="lbl">${lbl}</div></div>`).join('');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ── THEME LOGIC ──
+function applyTheme(choice) {
+    localStorage.setItem('oo2026-theme', choice);
+    if (choice === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    } else {
+        document.documentElement.setAttribute('data-theme', choice);
+    }
+}
+(function initTheme() {
+    const saved = localStorage.getItem('oo2026-theme') || 'system';
+    applyTheme(saved);
+    const radio = document.getElementById('theme-' + saved);
+    if (radio) radio.checked = true;
+})();
+document.querySelectorAll('input[name="theme"]').forEach(r => {
+    r.addEventListener('change', () => applyTheme(r.value));
+});
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (localStorage.getItem('oo2026-theme') === 'system') applyTheme('system');
+});
+
+// ── VIEW TOGGLE ──
+function applyView(choice) {
+    localStorage.setItem('oo2026-view', choice);
+    const el = document.getElementById('lineup');
+    el.classList.remove('view-list', 'view-twoline');
+    if (choice === 'list') el.classList.add('view-list');
+    if (choice === 'twoline') el.classList.add('view-twoline');
+}
+(function initView() {
+    const saved = localStorage.getItem('oo2026-view') || 'card';
+    const radio = document.getElementById('view-' + saved);
+    if (radio) radio.checked = true;
+    applyView(saved);
+})();
+document.querySelectorAll('input[name="view"]').forEach(r => {
+    r.addEventListener('change', () => applyView(r.value));
+});
+
+// TODO toggle
+document.getElementById('todo-toggle').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('todo-list').classList.toggle('open');
+});
+
+// Collapse/expand all genre sections
+document.getElementById('collapse-all').addEventListener('click', () => {
+    const fs = {};
+    document.querySelectorAll('.genre-section').forEach(sec => {
+        sec.querySelector('h2').classList.add('collapsed');
+        sec.querySelector('.acts-grid').classList.add('collapsed');
+        fs[sec.dataset.genre] = true;
+    });
+    localStorage.setItem('oo2026-folds', JSON.stringify(fs));
+});
+document.getElementById('expand-all').addEventListener('click', () => {
+    document.querySelectorAll('.genre-section').forEach(sec => {
+        sec.querySelector('h2').classList.remove('collapsed');
+        sec.querySelector('.acts-grid').classList.remove('collapsed');
+    });
+    localStorage.setItem('oo2026-folds', '{}');
+});
+
+render();
+</script>
+
+<details class="regen-prompt">
+<summary>Page regeneration prompt</summary>
+Generate a single-file HTML page for the Outlook Origins 2026 music festival lineup (The Garden, Tisno, Croatia, 23-27 July 2026, https://www.outlookorigins.com/). Self-contained: inline CSS, inline SVG icons, inline JS. No external dependencies.
+
+Structure: head (meta charset/viewport, style block), body (header, fold-controls, main#lineup, todo-section, this regen prompt, script block).
+
+Header: Split into .header-left (SVG circular logo with "OUTLOOK"/"ORIGINS" text in brand accent, .header-info with h1 title "Outlook Origins 2026" — first word bold, rest light weight, uppercase, letter-spaced 5px — and .subtitle with location/dates/link) and .header-right (countdown timer, view radio group, theme radio group). Header uses flexbox, wraps to column on mobile.
+
+Countdown: Targets 23 July 2026 12:00 CEST. Updates every second. Shows days/hrs/min/sec. Positioned in .header-right.
+
+Themes (in this order): System, Light, Mid, Dark, OLED. Each sets CSS custom properties: --bg, --card, --card-hover, --text, --text-dim, --accent, --border, --link-bg, --link-hover, --link-hover-text. Brand: --oo-gold: #c4a35a, --oo-sand: #e8d5a3. Genre colours: --dnb, --dubstep, --grime, --soundsystem, --techno, --breaks, --club, --ukg, --jazz, --afro, --unknown. Persisted to localStorage.
+
+Views (in this order): Cards, Compact, List. Cards: CSS grid auto-fill minmax(320px,1fr), flex-column cards with checkerboard 2-corner rounding (6px, computed via JS assignCorners on render+resize). Compact: row layout, shows umbrella tag + name + truncated desc + meta + links. List: dense rows, shows umbrella tag + name + truncated desc + info/from meta + links. Views persisted to localStorage.
+
+Data model: Each act = { name, genre (key into GENRES map), desc (empty = TODO), links: { sc, bc, ig, yt, sp, dc, mb } (slugs or full URLs), from (location), styles (comma-sep), conf (1-3), since (year, opt), releases (count, opt), subgenre (opt, else derived from first style) }.
+
+Card layout (top to bottom): 1) .act-top: h3 name (left), .act-taxonomy (right-aligned) with genre tag (coloured, no "umbrella:" label), "genre:" label + subgenre, "styles:" label + styles. 2) .desc paragraph with margin-top spacing. 3) .act-bottom (margin-top:auto): .act-meta inline row — from, since, releases, then info ticks pushed to end via margin-left:auto+order:99. 4) .links row (last) — coloured SVG favicons per service; links with confirmed slugs get brand colours, search fallbacks get .lnk-search class (greyed out, 0.5 opacity).
+
+Genre sections: Grouped by genre in order (dnb, dubstep, grime, soundsystem, techno, breaks, club, ukg, jazz, afro, unknown). Clickable h2 headers with card-style background, border, hover highlight, coloured dot, label, count, fold arrow. Fold state persisted. "Expand all" / "Collapse all" buttons above lineup.
+
+TODO section: After lineup. Collapsible. Checkbox list with localStorage persistence. 3/2/1 column responsive.
+
+This prompt section appears at the bottom inside a collapsible details.regen-prompt element.
+</details>
+
+<details class="regen-prompt">
+<summary>AI task: verify and add act profile links</summary>
+Given the index.html file, work through acts that have search-fallback links (no explicit slug in their links object). For each act, research and find their actual profile URLs on SoundCloud, Bandcamp, Instagram, YouTube, Spotify, Discogs, and MusicBrainz. Add confirmed slugs to the act's links object. Mark search-confirmed links by adding the slug. After adding links, verify each URL returns HTTP 200 (not 404 or redirect to search). Increase the act's conf level if appropriate. Work through one genre section at a time. Do not modify descriptions or other fields.
+</details>
+
+<details class="regen-prompt">
+<summary>AI task: write and improve act descriptions</summary>
+Given the index.html file, work through acts that have empty or short descriptions. Each act should have exactly 3 sentences in its desc field: 1) Who they are and what they do (role, origin, key affiliations). 2) Their sound and style (specific sonic characteristics, influences). 3) A notable achievement, release, or contribution to the scene. Use factual, verifiable information. Do not invent credits or releases. If unsure, keep existing text and note uncertainty. Work through one genre section at a time. Do not modify links or other fields. Set conf to 2 if the description is researched but links are unverified, or 3 if both description and links are confirmed.
+</details>
+
+<details class="regen-prompt">
+<summary>AI task: populate since/releases/subgenre fields</summary>
+Given the index.html file, work through acts that are missing the since (year started), releases (approximate count from Discogs), or subgenre fields. Research each act's career start year and Discogs release count. Add a subgenre field where the primary genre label should differ from the first item in styles. Work through one genre section at a time. Do not modify descriptions or links.
+</details>
+
+<details class="regen-prompt">
+<summary>AI task: identify unknown acts</summary>
+Given the index.html file, find acts with empty desc fields in the TODO section. Research each name to determine: genre, description (3 sentences), location (from), styles, and any profile links. These are acts on the Outlook Origins 2026 lineup (bass music festival in Croatia). Some may be emerging/local artists with minimal online presence. If an act cannot be identified with reasonable confidence, leave the desc empty and note it. Work through the list alphabetically. Do not modify existing described acts.
+</details>
+
+</body>
+</html>
