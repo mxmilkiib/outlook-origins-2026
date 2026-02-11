@@ -40,7 +40,7 @@
             --bg: #000; --card: #111; --card-hover: #1a1a1a; --text: #fff;
             --text-dim: #aaa; --accent: #fff; --border: #333; --link-bg: #1a1a1a; --link-hover: #fff; --link-hover-text: #000;
         }
-        [data-theme="inverted"] {
+        [data-theme="wb"] {
             --bg: #fff; --card: #eee; --card-hover: #e5e5e5; --text: #000;
             --text-dim: #555; --accent: #000; --border: #ccc; --link-bg: #e5e5e5; --link-hover: #000; --link-hover-text: #fff;
         }
@@ -52,6 +52,21 @@
             --bg: #1a1520; --card: #221e2a; --card-hover: #2a2535; --text: #d8c8e0;
             --text-dim: #8a7a9a; --accent: #a080c0; --border: #352e40; --link-bg: #2a2535; --link-hover: #a080c0; --link-hover-text: #1a1520;
         }
+        [data-theme="red-black"] {
+            --bg: #0a0000; --card: #1a0808; --card-hover: #241010; --text: #e0c0c0;
+            --text-dim: #884444; --accent: #d03030; --border: #2a1010; --link-bg: #1e0c0c; --link-hover: #d03030; --link-hover-text: #fff;
+        }
+        [data-theme="blue-white"] {
+            --bg: #eef2f8; --card: #fff; --card-hover: #e8eef6; --text: #0a1a3a;
+            --text-dim: #556688; --accent: #1a60c0; --border: #c0d0e4; --link-bg: #dce6f2; --link-hover: #1a60c0; --link-hover-text: #fff;
+        }
+        [data-theme="rainbow"] {
+            --bg: #0d0d14; --card: #141420; --card-hover: #1a1a2a; --text: #e0e0e0;
+            --text-dim: #888; --accent: #e04080; --border: #2a2a3a; --link-bg: #1a1a28; --link-hover: #e04080; --link-hover-text: #fff;
+        }
+        [data-theme="rainbow"] .genre-section h2 { border-color: var(--genre-color, var(--border)); }
+        [data-theme="rainbow"] .genre-section h2:hover { border-color: var(--genre-color, var(--accent)); }
+        [data-theme="rainbow"] .control-group input[type="radio"]:checked + label { background: linear-gradient(135deg, #e04080, #f0a030, #40c060, #3080e0, #a040d0); color: #fff; border-color: #e04080; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; padding: 1rem; max-width: 1600px; margin: 0 auto; transition: background 0.3s, color 0.3s; }
 
@@ -257,13 +272,16 @@
                 <input type="radio" name="theme" id="theme-mid" value="mid"><label for="theme-mid">Mid</label>
                 <input type="radio" name="theme" id="theme-dark" value="dark"><label for="theme-dark">Dark</label>
                 <input type="radio" name="theme" id="theme-oled" value="oled"><label for="theme-oled">OLED</label>
+                <input type="radio" name="theme" id="theme-bw" value="bw"><label for="theme-bw">B&amp;W</label>
+                <input type="radio" name="theme" id="theme-wb" value="wb"><label for="theme-wb">W&amp;B</label>
             </div>
             <div class="control-group">
                 <span>Colour:</span>
                 <input type="radio" name="theme" id="theme-purple-gold" value="purple-gold"><label for="theme-purple-gold">Purple/Gold</label>
                 <input type="radio" name="theme" id="theme-gold-green" value="gold-green"><label for="theme-gold-green">Gold/Green</label>
-                <input type="radio" name="theme" id="theme-bw" value="bw"><label for="theme-bw">B&amp;W</label>
-                <input type="radio" name="theme" id="theme-inverted" value="inverted"><label for="theme-inverted">Inverted</label>
+                <input type="radio" name="theme" id="theme-red-black" value="red-black"><label for="theme-red-black">Red/Black</label>
+                <input type="radio" name="theme" id="theme-blue-white" value="blue-white"><label for="theme-blue-white">Blue/White</label>
+                <input type="radio" name="theme" id="theme-rainbow" value="rainbow"><label for="theme-rainbow">Rainbow</label>
                 <input type="radio" name="theme" id="theme-pastel-light" value="pastel-light"><label for="theme-pastel-light">Pastel L</label>
                 <input type="radio" name="theme" id="theme-pastel-dark" value="pastel-dark"><label for="theme-pastel-dark">Pastel D</label>
             </div>
@@ -778,7 +796,7 @@ function render() {
         const info = GENRES[g];
         const isFolded = foldState[g] === true;
         const foldedH = isFolded ? ' collapsed' : '';
-        html += `<section class="genre-section" data-genre="${g}">
+        html += `<section class="genre-section" data-genre="${g}" style="--genre-color:${info.color}">
             <h2 class="${foldedH}"><span class="dot" style="background:${info.color}"></span>${info.label} <span class="genre-count">(${grouped[g].length})</span><span class="fold-arrow">\u25BC</span></h2>
             <div class="acts-grid${isFolded ? ' collapsed' : ''}">${grouped[g].map(renderCard).join('')}</div>
         </section>`;
@@ -848,7 +866,8 @@ function applyTheme(choice) {
     }
 }
 (function initTheme() {
-    const saved = localStorage.getItem('oo2026-theme') || 'system';
+    let saved = localStorage.getItem('oo2026-theme') || 'system';
+    if (saved === 'inverted') saved = 'wb';
     applyTheme(saved);
     const radio = document.getElementById('theme-' + saved);
     if (radio) radio.checked = true;
