@@ -47,11 +47,11 @@
         [data-theme="wb"] .control-group input[type="radio"]:checked + label { color: #fff; }
         [data-theme="bw"] .genre-tag, [data-theme="wb"] .genre-tag { background: var(--text-dim) !important; color: var(--bg); }
         [data-theme="pastel-light"] {
-            --bg: #f0f4f8; --card: #fff; --card-hover: #eef6f0; --text: #2a3040;
-            --text-dim: #6a7a8a; --accent: #e07050; --border: #d0dce0; --link-bg: #e4ecf0; --link-hover: #e07050; --link-hover-text: #fff;
-            --dnb: #d06040; --dubstep: #8060b0; --grime: #c04848; --soundsystem: #40a060;
-            --techno: #4088c0; --breaks: #c09830; --club: #c060a0; --ukg: #40a8a8;
-            --jazz: #c08840; --afro: #50a860; --unknown: #8090a0;
+            --bg: #f8f0f0; --card: #fff8f6; --card-hover: #f6eefc; --text: #302830;
+            --text-dim: #8a707a; --accent: #c05878; --border: #e0d0d8; --link-bg: #f0e4ec; --link-hover: #c05878; --link-hover-text: #fff;
+            --dnb: #c85040; --dubstep: #8858b8; --grime: #b84040; --soundsystem: #a06830;
+            --techno: #6070b0; --breaks: #b88830; --club: #b850a0; --ukg: #887040;
+            --jazz: #b07838; --afro: #986040; --unknown: #908078;
         }
         [data-theme="pastel-dark"] {
             --bg: #0d1a1a; --card: #142424; --card-hover: #1a2e2e; --text: #c8e0d8;
@@ -687,6 +687,7 @@ const ICONS = {
     sp: `<svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>`,
     dc: `<svg viewBox="0 0 24 24"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.078 4.8h2.172c3.733 0 6.078 2.86 6.078 7.2s-2.345 7.2-6.078 7.2h-2.172V4.8zm2.172 12.6c2.494 0 3.878-2.094 3.878-5.4s-1.384-5.4-3.878-5.4h-.372v10.8h.372z"/></svg>`,
     mb: `<svg viewBox="0 0 24 24"><path d="M0 1.418v21.164h24V1.418zm1.2 1.2h21.6v18.764H1.2zM4.39 5.478a2.71 2.71 0 00-1.905.816v-.676H1.4v8.624h1.2V9.67a1.89 1.89 0 011.623-1.923A1.552 1.552 0 015.91 9.42v4.822h1.2V9.22a2.553 2.553 0 00-2.72-3.742zm8.063 0c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624h5.76v-.7c0-2.12-1.362-3.804-3.38-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484H9.97c.1-1.5.99-2.484 2.38-2.484zM19.6 5.478c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624H22.8v-.7c-.06-2.06-1.362-3.804-3.2-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484h-4.66c.1-1.5.99-2.484 2.38-2.484z"/></svg>`,
+    ry: `<svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zm2 2v14h14V5zm2 2h4.5c1.38 0 2.5 1.12 2.5 2.5 0 .97-.56 1.81-1.37 2.22L15 14.5 12.5 19h-2l2.5-4.5H9V19H7z"/></svg>`,
 };
 
 function buildLinks(act) {
@@ -700,6 +701,7 @@ function buildLinks(act) {
         spotify: l.sp ? (l.sp.startsWith("http") ? l.sp : `https://open.spotify.com/search/${q}`) : `https://open.spotify.com/search/${q}`,
         discogs: l.dc ? (l.dc.startsWith("http") ? l.dc : `https://www.discogs.com/artist/${l.dc}`) : `https://www.discogs.com/search/?q=${q}&type=artist`,
         musicbrainz: l.mb ? (l.mb.startsWith("http") ? l.mb : `https://musicbrainz.org/artist/${l.mb}`) : `https://musicbrainz.org/search?query=${q}&type=artist`,
+        rym: l.ry ? (l.ry.startsWith("http") ? l.ry : `https://rateyourmusic.com/artist/${l.ry}`) : `https://rateyourmusic.com/search?searchterm=${q}&searchtype=a`,
     };
 }
 
@@ -725,6 +727,7 @@ function renderCard(act) {
         `<a class="${lc('sp', l.sp && l.sp.startsWith('http'))}" href="${links.spotify}" target="_blank" rel="noopener">${ICONS.sp}SP</a>`,
         `<a class="${lc('dc', l.dc)}" href="${links.discogs}" target="_blank" rel="noopener">${ICONS.dc}DC</a>`,
         `<a class="${lc('mb', l.mb)}" href="${links.musicbrainz}" target="_blank" rel="noopener">${ICONS.mb}MB</a>`,
+        `<a class="${lc('ry', l.ry)}" href="${links.rym}" target="_blank" rel="noopener">${ICONS.ry}RY</a>`,
     ].filter(Boolean).join('');
 
     // Merge genres + styles into one deduplicated line
