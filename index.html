@@ -37,12 +37,12 @@
             --text-dim: #6a8a4a; --accent: #50b060; --border: #1a3a1a; --link-bg: #12291a; --link-hover: #c4a35a; --link-hover-text: #0a1a0a;
         }
         [data-theme="bw"] {
-            --bg: #fff; --card: #f5f5f5; --card-hover: #eee; --text: #000;
-            --text-dim: #555; --accent: #000; --border: #ccc; --link-bg: #e8e8e8; --link-hover: #000; --link-hover-text: #fff;
+            --bg: #000; --card: #111; --card-hover: #1a1a1a; --text: #fff;
+            --text-dim: #aaa; --accent: #fff; --border: #333; --link-bg: #1a1a1a; --link-hover: #fff; --link-hover-text: #000;
         }
         [data-theme="inverted"] {
-            --bg: #fff; --card: #000; --card-hover: #111; --text: #fff;
-            --text-dim: #aaa; --accent: #fff; --border: #333; --link-bg: #1a1a1a; --link-hover: #fff; --link-hover-text: #000;
+            --bg: #fff; --card: #eee; --card-hover: #e5e5e5; --text: #000;
+            --text-dim: #555; --accent: #000; --border: #ccc; --link-bg: #e5e5e5; --link-hover: #000; --link-hover-text: #fff;
         }
         [data-theme="pastel-light"] {
             --bg: #f8f0f4; --card: #fff; --card-hover: #f5eef2; --text: #3a2a3a;
@@ -170,7 +170,8 @@
         .view-twoline .act-card h3 { font-size: 0.9rem; }
         .view-twoline .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
         .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
+        .view-twoline .act-card .links { margin-left: auto; }
         .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
         .view-twoline .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-twoline .act-card .act-collab { display: none; }
@@ -185,7 +186,7 @@
         .view-list .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
         .view-list .act-card .act-taxonomy .genre-tag { font-size: 0.5rem; padding: 0 4px; }
         .view-list .act-card .desc { margin: 0; font-size: 0.75rem; flex: 1; min-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .view-list .act-card .act-bottom { margin: 0; padding: 0; flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; }
+        .view-list .act-card .act-bottom { margin: 0; padding: 0; flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; flex-direction: row-reverse; }
         .view-list .act-card .act-meta { display: flex; gap: 0.15rem 0.4rem; margin: 0; font-size: 0.55rem; }
         .view-list .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
@@ -295,10 +296,10 @@
 
 <script>
 const GENRES = {
-    dnb:         { label: "Drum & Bass / Jungle", color: "var(--dnb)" },
+    dnb:         { label: "D&B / Jungle", color: "var(--dnb)" },
     dubstep:     { label: "Dubstep / Deep Bass",  color: "var(--dubstep)" },
     grime:       { label: "Grime",                color: "var(--grime)" },
-    club:        { label: "Club Music / Hybrid Bass", color: "var(--club)" },
+    club:        { label: "Club / Hybrid", color: "var(--club)" },
     soundsystem: { label: "Soundsystem / Dub / Roots", color: "var(--soundsystem)" },
     breaks:      { label: "Breakbeat / Rave",     color: "var(--breaks)" },
     techno:      { label: "Techno / Electro / Experimental", color: "var(--techno)" },
