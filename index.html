@@ -47,12 +47,18 @@
         [data-theme="wb"] .control-group input[type="radio"]:checked + label { color: #fff; }
         [data-theme="bw"] .genre-tag, [data-theme="wb"] .genre-tag { background: var(--text-dim) !important; color: var(--bg); }
         [data-theme="pastel-light"] {
-            --bg: #f8f0f4; --card: #fff; --card-hover: #f5eef2; --text: #3a2a3a;
-            --text-dim: #8a6a7a; --accent: #b06090; --border: #e0d0d8; --link-bg: #f0e4ec; --link-hover: #b06090; --link-hover-text: #fff;
+            --bg: #f0f4f8; --card: #fff; --card-hover: #eef6f0; --text: #2a3040;
+            --text-dim: #6a7a8a; --accent: #e07050; --border: #d0dce0; --link-bg: #e4ecf0; --link-hover: #e07050; --link-hover-text: #fff;
+            --dnb: #d06040; --dubstep: #8060b0; --grime: #c04848; --soundsystem: #40a060;
+            --techno: #4088c0; --breaks: #c09830; --club: #c060a0; --ukg: #40a8a8;
+            --jazz: #c08840; --afro: #50a860; --unknown: #8090a0;
         }
         [data-theme="pastel-dark"] {
-            --bg: #1a1520; --card: #221e2a; --card-hover: #2a2535; --text: #d8c8e0;
-            --text-dim: #8a7a9a; --accent: #a080c0; --border: #352e40; --link-bg: #2a2535; --link-hover: #a080c0; --link-hover-text: #1a1520;
+            --bg: #0d1a1a; --card: #142424; --card-hover: #1a2e2e; --text: #c8e0d8;
+            --text-dim: #6a9a8a; --accent: #e8a060; --border: #1e3838; --link-bg: #182c2c; --link-hover: #e8a060; --link-hover-text: #0d1a1a;
+            --dnb: #e07050; --dubstep: #9878c8; --grime: #d05858; --soundsystem: #50c070;
+            --techno: #5098d8; --breaks: #d0a838; --club: #d070b0; --ukg: #50c0c0;
+            --jazz: #d09848; --afro: #60c070; --unknown: #708880;
         }
         [data-theme="red-black"] {
             --bg: #0a0000; --card: #1a0808; --card-hover: #241010; --text: #e0c0c0;
@@ -187,8 +193,8 @@
         .view-twoline .act-card h3 { font-size: 0.9rem; }
         .view-twoline .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
         .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; flex-direction: row-reverse; }
-        .view-twoline .act-card .links { margin-right: auto; }
+        .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
+        .view-twoline .act-card .links { margin-left: auto; }
         .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
         .view-twoline .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-twoline .act-card .act-collab { display: none; }
