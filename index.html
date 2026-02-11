@@ -89,7 +89,8 @@
         .header-info h1 { font-size: 1.4rem; color: var(--accent); letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 0.15rem; }
         .header-info h1 span { font-weight: 700; }
         .header-info .subtitle { color: var(--text-dim); font-size: 0.8rem; letter-spacing: 0.5px; }
-        .header-info .subtitle a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .header-info .ai-disclaimer { font-size: 0.6rem; color: var(--text-dim); opacity: 0.6; margin: 0.4rem 0 0; font-style: italic; }
+        .subtitle a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
         .header-info .subtitle a:hover { border-bottom-color: var(--accent); }
 
         /* ── COUNTDOWN ── */
@@ -181,8 +182,8 @@
         .act-card .act-collab { font-size: 0.65rem; color: var(--text-dim); margin-top: 0.3rem; line-height: 1.4; }
         .act-card .act-collab .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
         .act-card .releases-count { font-size: 0.65rem; color: var(--text-dim); margin-left: 4px; }
-        .act-card .links { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: center; }
-        .act-card .links a { font-size: 0.7rem; text-decoration: none; color: var(--text); background: var(--link-bg); padding: 3px 7px; border-radius: 3px; transition: background 0.2s, color 0.2s; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 3px; }
+        .act-card .links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.25rem; }
+        .act-card .links a { font-size: 0.7rem; text-decoration: none; color: var(--text); background: var(--link-bg); padding: 3px 7px; border-radius: 3px; transition: background 0.2s, color 0.2s; letter-spacing: 0.5px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; }
         .act-card .links a:hover { background: var(--link-hover); color: var(--link-hover-text); }
         .act-card .links a svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -194,7 +195,7 @@
         .view-twoline .act-card .act-taxonomy .act-field:nth-child(n+2) { display: none; }
         .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
-        .view-twoline .act-card .links { margin-left: auto; }
+        .view-twoline .act-card .links { display: flex; flex-wrap: wrap; gap: 0.2rem; margin-left: auto; }
         .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
         .view-twoline .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-twoline .act-card .act-collab { display: none; }
@@ -214,7 +215,7 @@
         .view-list .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
         .view-list .act-card .act-collab { display: none; }
-        .view-list .act-card .links { flex-shrink: 0; }
+        .view-list .act-card .links { display: flex; flex-wrap: wrap; gap: 0.2rem; flex-shrink: 0; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
 
@@ -226,6 +227,7 @@
         .act-card .links a.lnk-sp svg { fill: #1DB954; }
         .act-card .links a.lnk-dc svg { fill: #333; }
         .act-card .links a.lnk-mb svg { fill: #BA478F; }
+        .act-card .links a.lnk-ry svg { fill: #1a1a8b; }
         [data-theme="light"] .act-card .links a.lnk-dc svg { fill: #999; }
         .act-card .links a.lnk-search svg { fill: var(--text-dim) !important; opacity: 0.35; }
         .act-card .links a.lnk-search { opacity: 0.5; }
@@ -263,8 +265,8 @@
             <div class="header-info">
                 <h1><span>Outlook</span> Origins 2026</h1>
                 <p class="subtitle">The Garden, Tisno, Croatia &mdash; 23&ndash;27 July 2026 &mdash; <a href="https://www.outlookorigins.com/" target="_blank">outlookorigins.com</a> &mdash; <a href="poster.jpg" target="_blank">lineup poster</a></p>
+                <p class="ai-disclaimer">AI-generated guide. Links and details may contain errors.</p>
             </div>
-        </div>
         <div class="header-right">
             <div class="countdown" id="countdown"></div>
             <div class="control-group">
