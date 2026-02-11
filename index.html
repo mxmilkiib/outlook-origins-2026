@@ -53,12 +53,13 @@
 
         /* ── CONTROLS ── */
         .control-group { display: flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; color: var(--text-dim); }
-        .control-group label { cursor: pointer; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--border); transition: all 0.2s; }
+        .control-group label { cursor: pointer; padding: 2px 7px; border-radius: 4px 0 4px 0; border: 1px solid var(--border); transition: all 0.2s; }
+        .control-group label:nth-child(even) { border-radius: 0 4px 0 4px; }
         .control-group input[type="radio"] { display: none; }
         .control-group input[type="radio"]:checked + label { background: var(--accent); color: #000; border-color: var(--accent); }
 
         /* ── TODO SECTION ── */
-        #todo-section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; }
+        #todo-section { background: var(--card); border: 1px solid var(--border); border-radius: 6px 0 6px 0; padding: 1rem; margin-bottom: 2rem; }
         #todo-section h2 { font-size: 1rem; color: var(--accent); cursor: pointer; user-select: none; }
         #todo-section h2::before { content: '\25B8 '; }
         #todo-section h2.open::before { content: '\25BE '; }
@@ -70,7 +71,8 @@
 
         /* ── GENRE SECTIONS ── */
         .genre-section { margin-bottom: 1.5rem; }
-        .genre-section h2 { font-size: 1.1rem; margin-bottom: 0; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 8px; background: var(--card); transition: background 0.2s, border-color 0.2s; }
+        .genre-section h2 { font-size: 1.1rem; margin-bottom: 0; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 6px 0 6px 0; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 8px; background: var(--card); transition: background 0.2s, border-color 0.2s; }
+        .genre-section:nth-child(even) h2 { border-radius: 0 6px 0 6px; }
         .genre-section h2:hover { background: var(--card-hover); border-color: var(--accent); }
         .genre-section h2 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .genre-section h2 .fold-arrow { font-size: 0.7rem; margin-left: auto; color: var(--text-dim); transition: transform 0.2s; }
@@ -82,7 +84,8 @@
 
         /* ── FOLD ALL CONTROLS ── */
         .fold-controls { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; }
-        .fold-controls button { font-size: 0.65rem; padding: 3px 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
+        .fold-controls button { font-size: 0.65rem; padding: 3px 10px; border: 1px solid var(--border); border-radius: 4px 0 4px 0; background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
+        .fold-controls button:nth-child(even) { border-radius: 0 4px 0 4px; }
         .fold-controls button:hover { border-color: var(--accent); color: var(--accent); }
 
         /* ── CARD VIEW (default) ── */
@@ -102,9 +105,13 @@
         .act-card .act-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; margin-bottom: 0.35rem; align-items: center; }
         .act-card .act-meta .act-field { white-space: nowrap; }
         .act-card .act-meta .act-field:first-child { margin-left: auto; order: 99; }
-        .act-card .confidence { opacity: 0.5; font-size: 0.7rem; }
+        .act-card .confidence { font-size: 0.7rem; }
+        .act-card .confidence .conf-tick { opacity: 0.7; }
+        .act-card .confidence .conf-miss { opacity: 0.25; }
+        .act-card .act-collab { font-size: 0.65rem; color: var(--text-dim); margin-top: 0.3rem; line-height: 1.4; }
+        .act-card .act-collab .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
         .act-card .releases-count { font-size: 0.65rem; color: var(--text-dim); margin-left: 4px; }
-        .act-card .links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .act-card .links { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: center; }
         .act-card .links a { font-size: 0.7rem; text-decoration: none; color: var(--text); background: var(--link-bg); padding: 3px 7px; border-radius: 3px; transition: background 0.2s, color 0.2s; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 3px; }
         .act-card .links a:hover { background: var(--link-hover); color: var(--link-hover-text); }
         .act-card .links a svg { width: 12px; height: 12px; flex-shrink: 0; }
@@ -118,7 +125,8 @@
         .view-twoline .act-card .desc { font-size: 0.75rem; margin: 0; flex: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .view-twoline .act-card .act-bottom { margin: 0; padding: 0.15rem 0 0; flex: 100%; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
         .view-twoline .act-card .act-meta { display: flex; gap: 0.2rem 0.5rem; margin: 0; font-size: 0.6rem; flex-shrink: 0; }
-        .view-twoline .act-card .act-meta .act-field:first-child { margin-left: 0; order: 0; }
+        .view-twoline .act-card .act-meta .act-field:first-child { margin-left: auto; order: 99; }
+        .view-twoline .act-card .act-collab { display: none; }
         .view-twoline .act-card .links a { font-size: 0.6rem; padding: 1px 5px; }
         .view-twoline .act-card .links a svg { width: 10px; height: 10px; }
 
@@ -132,8 +140,9 @@
         .view-list .act-card .desc { margin: 0; font-size: 0.75rem; flex: 1; min-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .view-list .act-card .act-bottom { margin: 0; padding: 0; flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; }
         .view-list .act-card .act-meta { display: flex; gap: 0.15rem 0.4rem; margin: 0; font-size: 0.55rem; }
-        .view-list .act-card .act-meta .act-field:first-child { margin-left: 0; order: 0; }
+        .view-list .act-card .act-meta .act-field:first-child { margin-left: auto; order: 99; }
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
+        .view-list .act-card .act-collab { display: none; }
         .view-list .act-card .links { flex-shrink: 0; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
@@ -151,7 +160,8 @@
         .act-card .links a.lnk-search { opacity: 0.5; }
 
         /* ── REGEN PROMPT ── */
-        .regen-prompt { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-top: 2rem; font-size: 0.75rem; color: var(--text-dim); line-height: 1.7; white-space: pre-wrap; font-family: 'Courier New', monospace; }
+        .regen-prompt { background: var(--card); border: 1px solid var(--border); border-radius: 6px 0 6px 0; padding: 1.25rem; margin-top: 2rem; font-size: 0.75rem; color: var(--text-dim); line-height: 1.7; white-space: pre-wrap; font-family: 'Courier New', monospace; }
+        .regen-prompt:nth-of-type(even) { border-radius: 0 6px 0 6px; }
         .regen-prompt summary { cursor: pointer; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--accent); user-select: none; margin-bottom: 0.5rem; }
 
         @media (max-width: 700px) {
@@ -233,17 +243,17 @@ const GENRES = {
 // If desc is empty string, the act goes into the TODO list.
 const acts = [
     // ── DRUM & BASS / JUNGLE ──
-    { name: "Goldie", genre: "dnb", desc: "Legendary DnB pioneer and Metalheadz label boss. Cinematic, orchestral drum & bass since the early 90s.", links: { sc: "goldiemusic", ig: "golaboratories", dc: "4005-Goldie" }, from: "Wolverhampton, England", styles: "cinematic dnb, orchestral jungle, ambient dnb", conf: 3, since: 1992, releases: 45 },
+    { name: "Goldie", genre: "dnb", desc: "Legendary DnB pioneer and Metalheadz label boss. Cinematic, orchestral drum & bass since the early 90s.", links: { sc: "goldiemusic", ig: "golaboratories", dc: "4005-Goldie" }, from: "Wolverhampton, England", styles: "cinematic dnb, orchestral jungle, ambient dnb", conf: 3, since: 1992, releases: 45, collab: "DJ Storm, DJ Flight, Kemistry, Doc Scott, Ant TC1, Fabio & Grooverider" },
     { name: "Fabio & Grooverider", genre: "dnb", desc: "Iconic DnB DJ duo. BBC Radio 1 legends who helped define jungle and drum & bass from day one.", links: { dc: "271498-Fabio-Grooverider" }, from: "London, England", styles: "liquid dnb, jungle, classic dnb", conf: 3, since: 1988 },
     { name: "DJ Storm", genre: "dnb", desc: "Metalheadz resident and one of DnB's original selectors. Decades-deep in the scene.", links: { sc: "djstorm", dc: "13694-DJ-Storm" }, from: "London, England", styles: "dark dnb, techstep, classic jungle", conf: 3, since: 1991 },
     { name: "DJ Flight", genre: "dnb", desc: "DnB DJ. Metalheadz affiliated, known for deep, rolling selections.", links: { sc: "djflight", dc: "43048-DJ-Flight" }, from: "London, England", styles: "deep dnb, liquid, rolling dnb", conf: 3 },
-    { name: "Alix Perez", genre: "dnb", desc: "DnB and half-time producer. Runs 1985 Music. Dark, cinematic bass music.", links: { sc: "alixperez", ig: "alixperez", bc: "1985music", dc: "1467069-Alix-Perez" }, from: "Brussels, Belgium / London", styles: "halftime, autonomic, dark dnb, 140", conf: 3, since: 2007, releases: 30 },
+    { name: "Alix Perez", genre: "dnb", desc: "DnB and half-time producer. Runs 1985 Music. Dark, cinematic bass music.", links: { sc: "alixperez", ig: "alixperez", bc: "1985music", dc: "1467069-Alix-Perez" }, from: "Brussels, Belgium / London", styles: "halftime, autonomic, dark dnb, 140", conf: 3, since: 2007, releases: 30, collab: "Skeptical, Sam Binga, Eprom, SpectraSoul" },
     { name: "Tim Reaper b2b Neffa-T", genre: "dnb", desc: "Jungle revivalist producer meets veteran MC. Oldschool amen breaks, reese bass, and raw energy.", links: { sc: "timreaper", bc: "timreaper", ig: "timreaper", dc: "4648498-Tim-Reaper" }, from: "London, England", styles: "jungle, oldschool hardcore, amen breaks", conf: 3, since: 2014, releases: 55 },
     { name: "Breakage", genre: "dnb", desc: "DnB and dubstep producer. Digital Soundboy. Versatile bass music spanning DnB, dubstep, and garage.", links: { sc: "breakage", dc: "279389-Breakage" }, from: "London, England", styles: "dnb, dubstep, uk garage, bass", conf: 3, since: 2004, releases: 35 },
     { name: "Ant TC1", genre: "dnb", desc: "DnB DJ and producer. Dispatch Recordings co-founder. Deep, rolling, precision drum & bass.", links: { sc: "anttc1", dc: "193568-Ant-TC1" }, from: "London, England", styles: "deep dnb, rolling, tech dnb", conf: 3 },
     { name: "Foul Play", genre: "dnb", desc: "Seminal oldschool jungle/hardcore duo. Pioneers of the early 90s rave-to-jungle transition.", links: { dc: "3200-Foul-Play" }, from: "London, England", styles: "oldschool jungle, hardcore, breakbeat", conf: 3, since: 1992, releases: 20 },
     { name: "Loxy", genre: "dnb", desc: "Dark DnB DJ and producer. Cylon Recordings. Deep, atmospheric, and menacing selections.", links: { sc: "loxy", dc: "10992-Loxy" }, from: "London, England", styles: "dark dnb, techstep, neurofunk", conf: 3, since: 1995, releases: 80 },
-    { name: "Skeptical", genre: "dnb", desc: "DnB producer. Exit Records. Minimal, precise, clinical drum & bass.", links: { sc: "skeptical", bc: "skepticalmusic", ig: "skepticaldnb", dc: "1562974-Skeptical" }, from: "Bristol, England", styles: "minimal dnb, tech dnb, clinical bass", conf: 3, since: 2010, releases: 40 },
+    { name: "Skeptical", genre: "dnb", desc: "DnB producer. Exit Records. Minimal, precise, clinical drum & bass.", links: { sc: "skeptical", bc: "skepticalmusic", ig: "skepticaldnb", dc: "1562974-Skeptical" }, from: "Bristol, England", styles: "minimal dnb, tech dnb, clinical bass", conf: 3, since: 2010, releases: 40, collab: "Alix Perez, dBridge, SP:MC" },
     { name: "SP:MC", genre: "dnb", desc: "Drum & bass MC. One of the most in-demand hosts on the DnB circuit.", links: {}, from: "England", styles: "mc, hosting", conf: 2 },
     { name: "MC GQ", genre: "dnb", desc: "Legendary DnB MC. Decades of hosting alongside the biggest names in drum & bass.", links: { dc: "244488-MC-GQ" }, from: "London, England", styles: "mc, hosting, jungle mc", conf: 3 },
     { name: "Double O", genre: "dnb", desc: "DnB DJ. Metalheadz affiliated. Deep, dark drum & bass selector.", links: {}, from: "London, England", styles: "deep dnb, dark dnb", conf: 2 },
@@ -255,7 +265,7 @@ const acts = [
     { name: "Thys", genre: "dnb", desc: "Member of Noisia. Neurofunk and experimental bass. Technically precise production.", links: { sc: "thysmusic", dc: "1455974-Thys" }, from: "Groningen, Netherlands", styles: "neurofunk, experimental bass, sound design", conf: 3, since: 2003, releases: 15 },
 
     // ── DUBSTEP / DEEP BASS ──
-    { name: "Mala", genre: "dubstep", desc: "Deep dubstep pioneer. Digital Mystikz, DMZ. Spiritual, sub-heavy meditations rooted in dub.", links: { sc: "maladmz", dc: "353539-Mala-2" }, from: "South London, England", styles: "deep dubstep, dub, spiritual bass, 140", conf: 3, since: 2003, releases: 30 },
+    { name: "Mala", genre: "dubstep", desc: "Deep dubstep pioneer. Digital Mystikz, DMZ. Spiritual, sub-heavy meditations rooted in dub.", links: { sc: "maladmz", dc: "353539-Mala-2" }, from: "South London, England", styles: "deep dubstep, dub, spiritual bass, 140", conf: 3, since: 2003, releases: 30, collab: "Coki, Loefah, Youngsta, T-Man, Sgt Pokes" },
     { name: "Youngsta", genre: "dubstep", desc: "Dubstep DJ. Long-running Rinse FM resident. An architect of the original dubstep sound.", links: { sc: "youngsta", dc: "326818-Youngsta" }, from: "Croydon, England", styles: "deep dubstep, 140, dark garage", conf: 3 },
     { name: "Pinch b2b Beatrice M.", genre: "dubstep", desc: "Bristol dubstep pioneer and Tectonic Recordings boss meets fellow bass selector.", links: { sc: "pinch", dc: "431615-Pinch-3" }, from: "Bristol, England", styles: "dubstep, techno-dub, 140, tectonic", conf: 3 },
     { name: "Commodo", genre: "dubstep", desc: "Dubstep producer. Black Acre, Deep Medi. Raw, stripped-back, heavy 140 bass music.", links: { sc: "commodo", bc: "commodomusic", dc: "2617474-Commodo" }, from: "England", styles: "140, raw dubstep, grime-step", conf: 3 },
@@ -265,7 +275,7 @@ const acts = [
     { name: "El-B", genre: "dubstep", desc: "UK garage pioneer. Ghost Records. Godfather of the dark garage / proto-dubstep sound.", links: { sc: "el-b", dc: "23781-El-B" }, from: "London, England", styles: "dark garage, proto-dubstep, 2-step, ukg", conf: 3, since: 1998, releases: 50 },
     { name: "Goth-Trad", genre: "dubstep", desc: "Japanese bass producer. Deep Medi. Industrial dubstep and experimental low-end.", links: { sc: "gothtrad", dc: "234610-Goth-Trad" }, from: "Tokyo, Japan", styles: "industrial dubstep, noise bass, experimental", conf: 3 },
     { name: "J. Sparrow", genre: "dubstep", desc: "Dub/dubstep producer. ZamZam Sounds. Roots-influenced deep bass and steppers.", links: { sc: "j-sparrow", dc: "3434949-J-Sparrow" }, from: "Bristol, England", styles: "dub-step, roots dub, steppers, 140", conf: 3 },
-    { name: "The Bug feat. Flowdan, Tikiman & Scion", genre: "dubstep", desc: "Kevin Martin's industrial dub/ragga project. Crushing bass weight with grime and dancehall MCs.", links: { sc: "thebugmusic", dc: "23624-The-Bug" }, from: "London, England", styles: "industrial dub, ragga, bass weight, noise", conf: 3, since: 1997, releases: 25 },
+    { name: "The Bug feat. Flowdan, Tikiman & Scion", genre: "dubstep", desc: "Kevin Martin's industrial dub/ragga project. Crushing bass weight with grime and dancehall MCs.", links: { sc: "thebugmusic", dc: "23624-The-Bug" }, from: "London, England", styles: "industrial dub, ragga, bass weight, noise", conf: 3, since: 1997, releases: 25, collab: "Flowdan, Killa P, Warrior Queen, Mala, Earth" },
     { name: "Oris Jay (Darqwan)", genre: "dubstep", desc: "Early dubstep pioneer. Texture Records founder. Deep, dark, foundational 140.", links: { dc: "51655-Oris-Jay" }, from: "London, England", styles: "proto-dubstep, dark garage, 140", conf: 3 },
     { name: "Cyrus", genre: "dubstep", desc: "Dubstep producer. Tempa, Deep Medi. Heavy, rolling 140 with mechanical precision.", links: { sc: "cyrusofficial", dc: "264437-Cyrus-4" }, from: "England", styles: "deep dubstep, rolling 140, mechanical", conf: 3 },
     { name: "Horsepower Productions", genre: "dubstep", desc: "UKG/dubstep pioneers. Tempa Records. Dark garage instrumentals that bridged garage and dubstep.", links: { dc: "73949-Horsepower-Productions" }, from: "South London, England", styles: "dark garage, proto-dubstep, ukg", conf: 3 },
@@ -276,7 +286,7 @@ const acts = [
     { name: "Dubrunner", genre: "dubstep", desc: "Dub-influenced bass producer. Deep, low-end-heavy productions.", links: { sc: "dubrunner" }, from: "England", styles: "dub, deep bass, 140", conf: 2 },
 
     // ── GRIME ──
-    { name: "Roll Deep", genre: "grime", desc: "Legendary grime crew. One of the genre's founding collectives, featuring Wiley, Flowdan, and more.", links: { dc: "285718-Roll-Deep" }, from: "Bow, East London", styles: "grime, garage-mc, eskibeat", conf: 3, since: 2002, releases: 15 },
+    { name: "Roll Deep", genre: "grime", desc: "Legendary grime crew. One of the genre's founding collectives, featuring Wiley, Flowdan, and more.", links: { dc: "285718-Roll-Deep" }, from: "Bow, East London", styles: "grime, garage-mc, eskibeat", conf: 3, since: 2002, releases: 15, collab: "Wiley, Dizzee Rascal, Flowdan, Manga Saint Hilare, Skepta" },
     { name: "Sir Spyro", genre: "grime", desc: "Grime DJ. Rinse FM. One of the most respected and consistent grime selectors.", links: { sc: "sirspyro", ig: "sirspyro" }, from: "London, England", styles: "grime, instrumentals, pirate radio", conf: 3 },
     { name: "Manga Saint Hilare", genre: "grime", desc: "Grime MC. Peng Tings. Witty, technical lyricism and versatile flow.", links: { sc: "mangasainthilare", ig: "mangasainthilare", dc: "3805003-Manga-Saint-Hilare" }, from: "London, England", styles: "grime, uk rap, lyrical", conf: 3 },
     { name: "Jammz", genre: "grime", desc: "Grime MC. I Spy Records. Raw, energetic bars.", links: { sc: "jammz", dc: "4724416-Jammz" }, from: "London, England", styles: "grime, mc", conf: 3 },
@@ -286,10 +296,10 @@ const acts = [
     { name: "Double Clapperz", genre: "grime", desc: "Grime DJs and producers. High-energy grime sets and productions.", links: { sc: "doubleclapperz" }, from: "London, England", styles: "grime, high-energy, club grime", conf: 2 },
     { name: "Sgt Pokes", genre: "grime", desc: "Grime DJ. No Hats No Hoods. Specialist grime selector.", links: { sc: "sgt-pokes" }, from: "London, England", styles: "grime, pirate radio, specialist", conf: 2 },
     { name: "Crazy D", genre: "grime", desc: "Grime MC. Energetic, raw lyrical style.", links: {}, from: "London, England", styles: "grime, mc", conf: 1 },
-    { name: "Flowdan", genre: "grime", desc: "Grime MC. Roll Deep alumni. The Bug collaborator. Iconic voice in bass music.", links: { sc: "flowdan", ig: "flowdan_", dc: "336530-Flowdan" }, from: "London, England", styles: "grime, ragga, dancehall mc, bass", conf: 3, since: 2002, releases: 20 },
+    { name: "Flowdan", genre: "grime", desc: "Grime MC. Roll Deep alumni. The Bug collaborator. Iconic voice in bass music.", links: { sc: "flowdan", ig: "flowdan_", dc: "336530-Flowdan" }, from: "London, England", styles: "grime, ragga, dancehall mc, bass", conf: 3, since: 2002, releases: 20, collab: "The Bug, Wiley, Roll Deep, Killa P, Skrillex" },
 
     // ── SOUNDSYSTEM / DUB / ROOTS ──
-    { name: "Channel One Sound System", genre: "soundsystem", desc: "Legendary UK dub soundsystem. Kings of Notting Hill Carnival. Roots, dub, and steppers.", links: { dc: "252902-Channel-One-Sound-System" }, from: "London, England", styles: "roots dub, steppers, soundsystem", conf: 3, since: 1979 },
+    { name: "Channel One Sound System", genre: "soundsystem", desc: "Legendary UK dub soundsystem. Kings of Notting Hill Carnival. Roots, dub, and steppers.", links: { dc: "252902-Channel-One-Sound-System" }, from: "London, England", styles: "roots dub, steppers, soundsystem", conf: 3, since: 1979, collab: "Iration Steppas, Jah Shaka, Mungo's Hi Fi" },
     { name: "Iration Steppas", genre: "soundsystem", desc: "Dub and roots soundsystem from Leeds. Heavyweight dub sessions since the late 80s.", links: { dc: "37178-Iration-Steppas" }, from: "Leeds, England", styles: "dub, roots, steppers, soundsystem", conf: 3, since: 1988, releases: 30 },
     { name: "O.B.F. feat. Sr. Wilson & Charlie P", genre: "soundsystem", desc: "French dub soundsystem with reggae vocalists. Heavy sub-bass and dancehall energy.", links: { sc: "o-b-f", dc: "1766814-OBF" }, from: "Lyon, France", styles: "digital dub, soundsystem, dancehall", conf: 3 },
     { name: "Sinai Sound", genre: "soundsystem", desc: "Dub soundsystem. Deep roots and steppers selections.", links: {}, from: "England", styles: "roots, steppers, soundsystem dub", conf: 2 },
@@ -597,9 +607,12 @@ function buildLinks(act) {
 }
 
 function confidenceTicks(level) {
-    if (level >= 3) return '<span class="confidence" title="High confidence: verified links and description">&#10003;&#10003;&#10003;</span>';
-    if (level === 2) return '<span class="confidence" title="Medium confidence: some links unverified">&#10003;&#10003;</span>';
-    return '<span class="confidence" title="Low confidence: minimal info found">&#10003;</span>';
+    const max = 5;
+    const lv = Math.min(Math.max(level || 1, 0), max);
+    const ticks = '<span class="conf-tick">&#10003;</span>'.repeat(lv);
+    const misses = '<span class="conf-miss">?</span>'.repeat(max - lv);
+    const titles = ['Unknown','Minimal info','Some links found','Links verified','Description confirmed','Fully verified'];
+    return `<span class="confidence" title="${titles[lv] || ''}">${ticks}${misses}</span>`;
 }
 
 function renderCard(act) {
@@ -635,6 +648,7 @@ function renderCard(act) {
             </div>
         </div>
         <p class="desc">${act.desc}</p>
+        ${act.collab ? `<div class="act-collab"><span class="act-label">appeared with:</span> ${act.collab}</div>` : ''}
         <div class="act-bottom">
             <div class="act-meta">
                 <span class="act-field"><span class="act-label">info:</span>${conf}</span>
