@@ -48,11 +48,11 @@
         [data-theme="wb"] .control-group input[type="radio"]:checked + label { color: #fff; }
         [data-theme="bw"] .genre-tag, [data-theme="wb"] .genre-tag { background: var(--text-dim) !important; color: var(--bg); }
         [data-theme="pastel"] {
-            --bg: #faf5f0; --card: #fff9f5; --card-hover: #f5eef8; --text: #3a2e38;
-            --text-dim: #9a8090; --accent: #d48aa0; --border: #e8d8e0; --link-bg: #f2e8ef; --link-hover: #d48aa0; --link-hover-text: #fff;
-            --dnb: #e0b878; --jungle: #88c8a0; --dubstep: #b898d8; --grime: #e09898; --soundsystem: #98c8a8;
-            --techno: #90a8d8; --breaks: #e0c888; --club: #d898c8; --ukg: #88c8c0;
-            --jazz: #d8b088; --afro: #a8d0a0; --unknown: #b8b0a8;
+            --bg: #e8f0f5; --card: #fef9fc; --card-hover: #f5eef8; --text: #2a3440;
+            --text-dim: #7a8898; --accent: #b88aa8; --border: #d0dce8; --link-bg: #e8f2f8; --link-hover: #b88aa8; --link-hover-text: #fff;
+            --dnb: #f0c090; --jungle: #90d8b0; --dubstep: #c8a8e8; --grime: #f0a0a0; --soundsystem: #a0d8c0;
+            --techno: #a0b8e8; --breaks: #f0d098; --club: #e8a0d0; --ukg: #98d8d8;
+            --jazz: #e8b890; --afro: #b0e0b0; --unknown: #c0c8d0;
         }
         [data-theme="ocean"] {
             --bg: #081820; --card: #0e2430; --card-hover: #142e3a; --text: #c0e0e8;
@@ -222,10 +222,15 @@
         .genre-section .genre-count { font-size: 0.7rem; color: var(--text-dim); font-weight: 400; }
 
         /* ── FOLD ALL CONTROLS ── */
-        .fold-controls { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; }
+        .fold-controls { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
         .fold-controls button { font-size: 0.65rem; padding: 3px 10px; border: 1px solid var(--border); border-radius: 4px 0 4px 0; background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
         .fold-controls button:nth-child(even) { border-radius: 0 4px 0 4px; }
         .fold-controls button:hover { border-color: var(--accent); color: var(--accent); }
+        #random-act-display { font-size: 0.75rem; color: var(--text); display: flex; align-items: center; gap: 0.3rem; padding: 3px 8px; background: var(--card); border: 1px solid var(--border); border-radius: 4px 0 4px 0; }
+        #random-act-display .random-name { font-weight: 600; }
+        #random-act-display .random-links { display: flex; gap: 0.2rem; }
+        #random-act-display .random-links a { font-size: 0.6rem; padding: 1px 4px; }
+        #random-act-display .random-links a svg { width: 10px; height: 10px; }
 
         /* ── CARD VIEW (default) ── */
         .acts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
@@ -294,8 +299,9 @@
         .view-list .act-card .act-meta { display: flex; gap: 0.15rem 0.4rem; margin: 0; font-size: 0.55rem; }
         .view-list .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
+        .view-list .act-card .act-meta .confidence { display: none; }
         .view-list .act-card .act-collab { display: none; }
-        .view-list .act-card .links { display: flex; flex-wrap: wrap; gap: 0.2rem; flex-shrink: 0; }
+        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; width: 280px; justify-content: flex-start; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
 
@@ -304,6 +310,9 @@
         .act-card .links a.lnk-bc svg { fill: #1da0c3; }
         .act-card .links a.lnk-ig svg { fill: #E4405F; }
         .act-card .links a.lnk-yt svg { fill: #FF0000; }
+        .act-card .links a.lnk-yt:not(.lnk-search) { border: 1px solid #FF0000; }
+        .act-card .links a.lnk-yt-music svg { fill: #FF0000; }
+        .act-card .links a.lnk-yt-music { border: none !important; }
         .act-card .links a.lnk-sp svg { fill: #1DB954; }
         .act-card .links a.lnk-dc svg { fill: #333; }
         .act-card .links a.lnk-mb svg { fill: #BA478F; }
@@ -400,6 +409,8 @@
     <div class="fold-controls">
         <button id="expand-all">Expand all</button>
         <button id="collapse-all">Collapse all</button>
+        <button id="random-act-btn">Random act:</button>
+        <div id="random-act-display" style="display:none;"></div>
     </div>
     <main id="lineup"></main>
     <section class="appendix">
@@ -803,7 +814,7 @@ function buildLinks(act) {
 function confidenceTicks(level) {
     const max = 5;
     const lv = Math.min(Math.max(level || 1, 0), max);
-    const rods = ['', '𝍠', '𝍡', '𝍢', '𝍣', '𝍤'];
+    const rods = ['', '𝍩', '𝍪', '𝍫', '𝍬', '𝍭'];
     const titles = ['Unknown','Minimal info','Some links found','Links verified','Description confirmed','Fully verified'];
     return `<span class="confidence" title="${titles[lv] || ''}">${rods[lv]}</span>`;
 }
@@ -814,11 +825,12 @@ function renderCard(act) {
     const l = act.links || {};
     const lc = (svc, confirmed) => `lnk-${svc}${confirmed ? '' : ' lnk-search'}`;
     const scClass = l.sc ? 'lnk-sc' : l.scRef ? 'lnk-sc lnk-sc-ref' : 'lnk-sc lnk-search';
+    const ytClass = l.yt ? (l.yt.includes('music.youtube.com') ? 'lnk-yt-music' : 'lnk-yt') : 'lnk-yt lnk-search';
     const linksHtml = [
         `<a class="${scClass}" href="${links.soundcloud}" target="_blank" rel="noopener">${ICONS.sc}SC</a>`,
         `<a class="${lc('bc', l.bc)}" href="${links.bandcamp}" target="_blank" rel="noopener">${ICONS.bc}BC</a>`,
         `<a class="${lc('ig', links.instagram)}" href="${links.instagram || 'https://www.instagram.com/search/top/?q=' + encodeURIComponent(act.name)}" target="_blank" rel="noopener">${ICONS.ig}IG</a>`,
-        `<a class="${lc('yt', l.yt)}" href="${links.youtube}" target="_blank" rel="noopener">${ICONS.yt}YT</a>`,
+        `<a class="${ytClass}" href="${links.youtube}" target="_blank" rel="noopener">${ICONS.yt}YT</a>`,
         `<a class="${lc('sp', l.sp && l.sp.startsWith('http'))}" href="${links.spotify}" target="_blank" rel="noopener">${ICONS.sp}SP</a>`,
         `<a class="${lc('dc', l.dc)}" href="${links.discogs}" target="_blank" rel="noopener">${ICONS.dc}DC</a>`,
         `<a class="${lc('mb', l.mb)}" href="${links.musicbrainz}" target="_blank" rel="noopener">${ICONS.mb}MB</a>`,
@@ -1069,6 +1081,29 @@ document.getElementById('appendix-toggle').addEventListener('click', function() 
 });
 
 render();
+
+// ── RANDOM ACT ──
+document.getElementById('random-act-btn').addEventListener('click', function() {
+    const randomAct = uniqueActs[Math.floor(Math.random() * uniqueActs.length)];
+    const l = randomAct.links || {};
+    const verifiedLinks = [];
+    
+    if (l.sc) verifiedLinks.push(`<a class="lnk-sc" href="${l.sc.startsWith("http") ? l.sc : `https://soundcloud.com/${l.sc}`}" target="_blank" rel="noopener">${ICONS.sc}SC</a>`);
+    if (l.bc) verifiedLinks.push(`<a class="lnk-bc" href="${l.bc.startsWith("http") ? l.bc : `https://${l.bc}.bandcamp.com`}" target="_blank" rel="noopener">${ICONS.bc}BC</a>`);
+    if (l.ig) verifiedLinks.push(`<a class="lnk-ig" href="https://instagram.com/${l.ig}" target="_blank" rel="noopener">${ICONS.ig}IG</a>`);
+    if (l.yt) {
+        const ytClass = l.yt.includes('music.youtube.com') ? 'lnk-yt-music' : 'lnk-yt';
+        verifiedLinks.push(`<a class="${ytClass}" href="${l.yt.startsWith("http") ? l.yt : `https://youtube.com/${l.yt}`}" target="_blank" rel="noopener">${ICONS.yt}YT</a>`);
+    }
+    if (l.sp && l.sp.startsWith('http')) verifiedLinks.push(`<a class="lnk-sp" href="${l.sp}" target="_blank" rel="noopener">${ICONS.sp}SP</a>`);
+    if (l.dc) verifiedLinks.push(`<a class="lnk-dc" href="${l.dc.startsWith("http") ? l.dc : `https://www.discogs.com/artist/${l.dc}`}" target="_blank" rel="noopener">${ICONS.dc}DC</a>`);
+    if (l.mb) verifiedLinks.push(`<a class="lnk-mb" href="${l.mb.startsWith("http") ? l.mb : `https://musicbrainz.org/artist/${l.mb}`}" target="_blank" rel="noopener">${ICONS.mb}MB</a>`);
+    if (l.ry) verifiedLinks.push(`<a class="lnk-ry" href="${l.ry.startsWith("http") ? l.ry : `https://rateyourmusic.com/artist/${l.ry}`}" target="_blank" rel="noopener">${ICONS.ry}RY</a>`);
+    
+    const display = document.getElementById('random-act-display');
+    display.innerHTML = `<span class="random-name">${randomAct.name}</span><div class="random-links">${verifiedLinks.join('')}</div>`;
+    display.style.display = 'flex';
+});
 </script>
 
 <details class="regen-prompt">
