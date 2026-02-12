@@ -430,6 +430,7 @@
         <button id="expand-all">Expand all</button>
         <button id="collapse-all">Collapse all</button>
         <button id="rotate-listing">Rotate listings</button>
+        <button id="reset-order">Reset</button>
         <button id="random-act-btn">Random act:</button>
         <div id="random-act-display" style="display:none;"></div>
     </div>
@@ -1123,26 +1124,43 @@ document.getElementById('appendix-toggle').addEventListener('click', function() 
 render();
 
 // ── RANDOM ACT ──
+const FAVICONS = {
+    sc: 'https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico',
+    bc: 'https://s4.bcbits.com/img/favicon/favicon-32x32.png',
+    ig: 'https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico',
+    yt: 'https://www.youtube.com/s/desktop/*/img/favicon_32x32.png',
+    sp: 'https://open.spotify.com/favicon.ico',
+    dc: 'https://www.discogs.com/favicon.ico',
+    mb: 'https://musicbrainz.org/static/images/favicons/favicon-32x32.png',
+    ry: 'https://e.snmc.io/3.0/img/logo/sonemic-32.png'
+};
+
 document.getElementById('random-act-btn').addEventListener('click', function() {
     const randomAct = uniqueActs[Math.floor(Math.random() * uniqueActs.length)];
     const l = randomAct.links || {};
     const verifiedLinks = [];
     
-    if (l.sc) verifiedLinks.push(`<a class="lnk-sc" href="${l.sc.startsWith("http") ? l.sc : `https://soundcloud.com/${l.sc}`}" target="_blank" rel="noopener">${ICONS.sc}</a>`);
-    if (l.bc) verifiedLinks.push(`<a class="lnk-bc" href="${l.bc.startsWith("http") ? l.bc : `https://${l.bc}.bandcamp.com`}" target="_blank" rel="noopener">${ICONS.bc}</a>`);
-    if (l.ig) verifiedLinks.push(`<a class="lnk-ig" href="https://instagram.com/${l.ig}" target="_blank" rel="noopener">${ICONS.ig}</a>`);
+    if (l.sc) verifiedLinks.push(`<a class="lnk-sc" href="${l.sc.startsWith("http") ? l.sc : `https://soundcloud.com/${l.sc}`}" target="_blank" rel="noopener"><img src="${FAVICONS.sc}" width="16" height="16" alt="SC"></a>`);
+    if (l.bc) verifiedLinks.push(`<a class="lnk-bc" href="${l.bc.startsWith("http") ? l.bc : `https://${l.bc}.bandcamp.com`}" target="_blank" rel="noopener"><img src="${FAVICONS.bc}" width="16" height="16" alt="BC"></a>`);
+    if (l.ig) verifiedLinks.push(`<a class="lnk-ig" href="https://instagram.com/${l.ig}" target="_blank" rel="noopener"><img src="${FAVICONS.ig}" width="16" height="16" alt="IG"></a>`);
     if (l.yt) {
         const ytClass = l.yt.includes('music.youtube.com') ? 'lnk-yt-music' : 'lnk-yt';
-        verifiedLinks.push(`<a class="${ytClass}" href="${l.yt.startsWith("http") ? l.yt : `https://youtube.com/${l.yt}`}" target="_blank" rel="noopener">${ICONS.yt}</a>`);
+        verifiedLinks.push(`<a class="${ytClass}" href="${l.yt.startsWith("http") ? l.yt : `https://youtube.com/${l.yt}`}" target="_blank" rel="noopener"><img src="${FAVICONS.yt}" width="16" height="16" alt="YT"></a>`);
     }
-    if (l.sp && l.sp.startsWith('http')) verifiedLinks.push(`<a class="lnk-sp" href="${l.sp}" target="_blank" rel="noopener">${ICONS.sp}</a>`);
-    if (l.dc) verifiedLinks.push(`<a class="lnk-dc" href="${l.dc.startsWith("http") ? l.dc : `https://www.discogs.com/artist/${l.dc}`}" target="_blank" rel="noopener">${ICONS.dc}</a>`);
-    if (l.mb) verifiedLinks.push(`<a class="lnk-mb" href="${l.mb.startsWith("http") ? l.mb : `https://musicbrainz.org/artist/${l.mb}`}" target="_blank" rel="noopener">${ICONS.mb}</a>`);
-    if (l.ry) verifiedLinks.push(`<a class="lnk-ry" href="${l.ry.startsWith("http") ? l.ry : `https://rateyourmusic.com/artist/${l.ry}`}" target="_blank" rel="noopener">${ICONS.ry}</a>`);
+    if (l.sp && l.sp.startsWith('http')) verifiedLinks.push(`<a class="lnk-sp" href="${l.sp}" target="_blank" rel="noopener"><img src="${FAVICONS.sp}" width="16" height="16" alt="SP"></a>`);
+    if (l.dc) verifiedLinks.push(`<a class="lnk-dc" href="${l.dc.startsWith("http") ? l.dc : `https://www.discogs.com/artist/${l.dc}`}" target="_blank" rel="noopener"><img src="${FAVICONS.dc}" width="16" height="16" alt="DC"></a>`);
+    if (l.mb) verifiedLinks.push(`<a class="lnk-mb" href="${l.mb.startsWith("http") ? l.mb : `https://musicbrainz.org/artist/${l.mb}`}" target="_blank" rel="noopener"><img src="${FAVICONS.mb}" width="16" height="16" alt="MB"></a>`);
+    if (l.ry) verifiedLinks.push(`<a class="lnk-ry" href="${l.ry.startsWith("http") ? l.ry : `https://rateyourmusic.com/artist/${l.ry}`}" target="_blank" rel="noopener"><img src="${FAVICONS.ry}" width="16" height="16" alt="RY"></a>`);
     
     const display = document.getElementById('random-act-display');
     display.innerHTML = `<span class="random-name">${randomAct.name}</span><div class="random-links">${verifiedLinks.join('')}</div>`;
     display.style.display = 'flex';
+});
+
+// ── RESET ORDER ──
+document.getElementById('reset-order').addEventListener('click', () => {
+    document.getElementById('random-act-display').style.display = 'none';
+    render();
 });
 </script>
 
