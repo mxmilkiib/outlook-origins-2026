@@ -338,8 +338,7 @@
         .act-card .links a.lnk-dc svg { fill: #333; }
         .act-card .links a.lnk-mb svg { fill: #BA478F; }
         .act-card .links a.lnk-ry:not(.lnk-search) { background: linear-gradient(var(--link-bg), var(--link-bg)) padding-box, linear-gradient(135deg, #E91E63 0%, #9C27B0 50%, #673AB7 100%) border-box; }
-        .act-card .links a.lnk-ry svg { fill: url(#rymGradient); }
-        .act-card .links a.lnk-ry svg defs { display: none; }
+        .act-card .links a.lnk-ry:not(.lnk-search) svg { fill: #9C27B0; }
         [data-theme="light"] .act-card .links a.lnk-dc svg { fill: #999; }
         .act-card .links a.lnk-sc:not(.lnk-search):not(.lnk-sc-ref) { border: 1px solid #ff5500; }
         .act-card .links a.lnk-sc-ref svg { fill: #ff5500; }
@@ -888,7 +887,6 @@ function renderCard(act) {
             <div class="links">${linksHtml}</div>
             <div class="act-meta">
                 ${[act.from ? `<span class="act-field"><span class="act-label">from:</span> ${act.from.replace(/,\s+/g, ', ').replace(/\s+,/g, ',').trim()}</span>` : '', act.since ? `<span class="act-field"><span class="act-label">since:</span> ${act.since}</span>` : '', act.releases ? `<span class="act-field"><span class="act-label">releases:</span> ${act.releases}</span>` : ''].filter(Boolean).join('<span class="meta-sep"> · </span>')}
-                <span class="act-field"><span class="act-label">info:</span> ${conf}</span>
             </div>
         </div>
     </div>`;
