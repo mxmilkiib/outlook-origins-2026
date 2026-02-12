@@ -95,9 +95,9 @@
         [data-theme="hatched"] {
             --bg: #f0ece4; --card: #fff; --card-hover: #f8f4ee; --text: #1a1a1a;
             --text-dim: #666; --accent: #2a2a2a; --border: #aaa; --link-bg: #e8e4dc; --link-hover: #2a2a2a; --link-hover-text: #fff;
-            --dnb: #c4a35a; --jungle: #40a848; --dubstep: #7040c0; --grime: #c03030; --soundsystem: #30a040;
+            --dnb: #c4a35a; --jungle: #50b060; --dubstep: #7040c0; --grime: #c03030; --soundsystem: #30a040;
             --techno: #3080d0; --breaks: #d0a020; --club: #d050a0; --ukg: #40b0b0;
-            --jazz: #d09040; --afro: #50b060; --unknown: #555;
+            --jazz: #d09040; --afro: #40a848; --unknown: #555;
         }
         [data-theme="poster"] {
             --bg: #0a0a0a; --card: #1a1a1a; --card-hover: #242424; --text: #f0e8d0;
@@ -243,7 +243,7 @@
         .act-card .act-taxonomy { text-align: right; flex-shrink: 0; min-width: 0; max-width: 75%; overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
         .act-card .act-field { font-size: 0.7rem; color: var(--text-dim); line-height: 1.5; }
         .act-card .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
-        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #000; vertical-align: middle; }
+        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; }
         .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: pretty; margin-top: 2px; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
         .act-card .tag-major { font-weight: 600; color: var(--text); opacity: 0.7; }
         .act-card .tag-minor { color: var(--text-dim); }
@@ -300,6 +300,7 @@
         .view-list .act-card .act-meta .act-field:last-child { margin-left: auto; }
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
         .view-list .act-card .act-meta .confidence { display: none; }
+        .view-list .act-card .act-meta .act-label { display: none; }
         .view-list .act-card .act-collab { display: none; }
         .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; min-width: 280px; max-width: 280px; justify-content: flex-start; overflow: hidden; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
@@ -401,8 +402,8 @@
                 <input type="radio" name="theme" id="theme-poster" value="poster"><label for="theme-poster">Poster</label>
                 <input type="radio" name="theme" id="theme-origins" value="origins"><label for="theme-origins">Origins</label>
                 <input type="radio" name="theme" id="theme-neon" value="neon"><label for="theme-neon">Neon</label>
-                <input type="radio" name="theme" id="theme-pastel" value="pastel"><label for="theme-pastel">Pastel</label>
                 <input type="radio" name="theme" id="theme-ocean" value="ocean"><label for="theme-ocean">Ocean</label>
+                <input type="radio" name="theme" id="theme-pastel" value="pastel"><label for="theme-pastel">Pastel</label>
                 <input type="radio" name="theme" id="theme-hatched" value="hatched"><label for="theme-hatched">Hatched</label>
             </div>
         </div>
