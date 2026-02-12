@@ -160,7 +160,7 @@
         .header-info .subtitle a:hover { border-bottom-color: transparent; }
 
         /* ── COUNTDOWN ── */
-        .countdown { display: flex; gap: 0.8rem; font-variant-numeric: tabular-nums; align-self: flex-start; }
+        .countdown { display: flex; gap: 0.8rem; font-variant-numeric: tabular-nums; align-self: flex-end; }
         .countdown-unit { text-align: center; }
         .countdown-unit .num { font-size: 1.1rem; font-weight: 700; color: var(--accent); line-height: 1; }
         .countdown-unit .lbl { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
@@ -178,6 +178,23 @@
         .control-group label:nth-child(even) { border-radius: 0 4px 0 4px; }
         .control-group input[type="radio"] { display: none; }
         .control-group input[type="radio"]:checked + label { background: var(--accent); color: #000; border-color: var(--accent); }
+
+        /* ── ROTATION ANIMATION ── */
+        @keyframes slideDown {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(20px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        .genre-section.rotating-out {
+            animation: slideDown 0.6s ease-in-out;
+        }
+        .genre-section.rotating-in {
+            animation: slideUp 0.4s ease-in-out;
+        }
 
         /* ── FOOTER ── */
         footer { margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; color: var(--text-dim); }
@@ -303,7 +320,7 @@
         .view-list .act-card .act-meta .act-label { display: none; }
         .view-list .act-card .act-meta .act-field:first-child { font-style: italic; }
         .view-list .act-card .act-collab { display: none; }
-        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; min-width: 280px; max-width: 280px; justify-content: flex-start; overflow: hidden; }
+        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; min-width: 280px; max-width: 300px; justify-content: flex-start; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
 
@@ -412,7 +429,7 @@
     <div class="fold-controls">
         <button id="expand-all">Expand all</button>
         <button id="collapse-all">Collapse all</button>
-        <button id="rotate-listing">Rotate listing</button>
+        <button id="rotate-listing">Rotate listings</button>
         <button id="random-act-btn">Random act:</button>
         <div id="random-act-display" style="display:none;"></div>
     </div>
@@ -1062,13 +1079,23 @@ document.getElementById('expand-all').addEventListener('click', () => {
     localStorage.setItem('oo2026-folds', '{}');
 });
 
-// Rotate listing - move top section to bottom
+// Rotate listings - move top section to bottom with animation
 document.getElementById('rotate-listing').addEventListener('click', () => {
     const lineup = document.getElementById('lineup');
     const sections = Array.from(lineup.querySelectorAll('.genre-section'));
-    if (sections.length > 0) {
-        lineup.appendChild(sections[0]);
-    }
+    if (sections.length === 0) return;
+    
+    const topSection = sections[0];
+    const otherSections = sections.slice(1);
+    
+    topSection.classList.add('rotating-out');
+    otherSections.forEach(sec => sec.classList.add('rotating-in'));
+    
+    setTimeout(() => {
+        lineup.appendChild(topSection);
+        topSection.classList.remove('rotating-out');
+        otherSections.forEach(sec => sec.classList.remove('rotating-in'));
+    }, 600);
 });
 
 // ── FONT SIZE ──
