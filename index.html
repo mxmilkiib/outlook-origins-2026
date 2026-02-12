@@ -288,6 +288,7 @@
         .act-card .links a.lnk-sp:not(.lnk-search) { border: 1px solid #1DB954; }
         .act-card .links a.lnk-mb:not(.lnk-search) { border: 1px solid #BA478F; }
         .act-card .links a.lnk-dc:not(.lnk-search) { border: 1px solid #F9E53C; }
+        .act-card .links a.lnk-ry:not(.lnk-search) { border: 1px solid #84C5FB; }
 
         /* ── TWO-LINE VIEW ── */
         .view-twoline .acts-grid { display: flex; flex-direction: column; gap: 3px; }
@@ -320,7 +321,7 @@
         .view-list .act-card .act-meta .act-label { display: none; }
         .view-list .act-card .act-meta .act-field:first-child { font-style: italic; }
         .view-list .act-card .act-collab { display: none; }
-        .view-list .act-card .links { display: flex; flex-wrap: wrap; gap: 0.2rem; flex-shrink: 0; width: 280px; justify-content: flex-start; }
+        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; overflow: hidden; justify-content: flex-start; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
 
@@ -336,7 +337,9 @@
         .act-card .links a.lnk-sp svg { fill: #1DB954; }
         .act-card .links a.lnk-dc svg { fill: #333; }
         .act-card .links a.lnk-mb svg { fill: #BA478F; }
-        .act-card .links a.lnk-ry svg { fill: #1a1a8b; }
+        .act-card .links a.lnk-ry:not(.lnk-search) { background: linear-gradient(var(--link-bg), var(--link-bg)) padding-box, linear-gradient(135deg, #E91E63 0%, #9C27B0 50%, #673AB7 100%) border-box; }
+        .act-card .links a.lnk-ry svg { fill: url(#rymGradient); }
+        .act-card .links a.lnk-ry svg defs { display: none; }
         [data-theme="light"] .act-card .links a.lnk-dc svg { fill: #999; }
         .act-card .links a.lnk-sc:not(.lnk-search):not(.lnk-sc-ref) { border: 1px solid #ff5500; }
         .act-card .links a.lnk-sc-ref svg { fill: #ff5500; }
@@ -500,7 +503,7 @@ const acts = [
     { name: "El-B", genre: "dubstep", desc: "Ghost Records founder and godfather of the dark garage sound that became proto-dubstep. Pitched-down 2-step and sub-bass pressure that rewired UK garage from the inside. 50+ releases spanning two decades of innovation.", genres: "dark garage, proto-dubstep, 2-step", links: { sc: "el-b", dc: "23781-El-B", sp: "https://open.spotify.com/artist/1uf3MnL4HKgF5Zc70a2EDF", yt: "https://music.youtube.com/channel/UC4nBlc6fpEMIQ6uUdAdy3Dw", mb: "88c68a48-dab0-4cb4-94f9-b94171b67a3b", ry: "el__b", bc: "el-b", ig: "el_b_music"}, from: "London, England", styles: "pitched-down, sub-pressure, ghost records, innovative, foundational", conf: 3, since: 1998, releases: 50 },
     { name: "Goth-Trad", genre: "dubstep", desc: "Japanese producer on Deep Medi merging industrial noise with dubstep bass weight. Crushing low-end frequencies shaped by Tokyo's experimental music underground. New Epoch pushed the genre into harsher, uncharted territory.", genres: "dubstep, industrial, noise", links: { sc: "goth-trad", dc: "234610-Goth-Trad", sp: "https://open.spotify.com/artist/133pV477MVSsj1MHgsrIc9", yt: "https://music.youtube.com/channel/UC9hcsIogpCq3EZ-0t0uyufw", mb: "f2c933d1-f0f3-4bb7-9575-6a549da03489", ry: "goth__trad", bc: "gothtrad", ig: "gothtrad"}, from: "Tokyo, Japan", styles: "crushing, experimental, deep medi, harsh, Tokyo", conf: 3, since: 2004 },
     { name: "J. Sparrow", genre: "dubstep", desc: "Producer on ZamZam Sounds blending roots dub with dubstep's sub-bass. Steppers rhythms and tape-echo textures over heavyweight foundations. A key voice in the roots-meets-140 movement.", genres: "dubstep, dub, roots", links: { sc: "j-sparrow", dc: "3434949-J-Sparrow", sp: "https://open.spotify.com/artist/2VOYvaSniOSZRdPU2Wil3z", mb: "ab57c430-4ba8-4338-9463-30d9c53583f5", ry: "j_-sparrow", bc: "j-sparrow", ig: "j.sparrow"}, from: "Bristol, England", styles: "steppers, tape-echo, zamzam, heavyweight, rootical", conf: 3, since: 2010 },
-    { name: "The Bug feat. Flowdan, Tikiman & Scion", genre: "dubstep", desc: "Kevin Martin's industrial dub and ragga project with rotating MCs. Crushing bass weight fused with grime vocals and dancehall energy. London Zoo and Angels & Devils are landmark albums.", genres: "industrial dub, ragga, bass", links: { sc: "thebugmusic", dc: "23624-The-Bug", sp: "https://open.spotify.com/artist/213i4NKah1DX9q0FNiKsuw", yt: "https://music.youtube.com/channel/UCpFDrI9UAMp6cpwtZwzUg-g", mb: "eddd6562-ab2a-4a26-a53a-2141854a57df", ig: "thebugmusic"}, from: "London, England", styles: "crushing, noise, dancehall, grime vocals, confrontational", conf: 3, since: 1997, releases: 25, collab: "Flowdan, Killa P, Warrior Queen, Mala, Earth" },
+    { name: "The Bug feat. Flowdan,<wbr> Tikiman & Scion", genre: "dubstep", desc: "Kevin Martin's industrial dub and ragga project with rotating MCs. Crushing bass weight fused with grime vocals and dancehall energy. London Zoo and Angels & Devils are landmark albums.", genres: "industrial dub, ragga, bass", links: { sc: "thebugmusic", dc: "23624-The-Bug", sp: "https://open.spotify.com/artist/213i4NKah1DX9q0FNiKsuw", yt: "https://music.youtube.com/channel/UCpFDrI9UAMp6cpwtZwzUg-g", mb: "eddd6562-ab2a-4a26-a53a-2141854a57df", ig: "thebugmusic"}, from: "London, England", styles: "crushing, noise, dancehall, grime vocals, confrontational", conf: 3, since: 1997, releases: 25, collab: "Flowdan, Killa P, Warrior Queen, Mala, Earth" },
     { name: "Oris Jay (Darqwan)", genre: "dubstep", desc: "Early dubstep pioneer and Texture Records founder from South London. Deep, dark productions that laid the foundations for 140 bass music. One of the first to press dubstep to vinyl.", genres: "dubstep, dark garage, 140", links: { dc: "51655-Oris-Jay", sp: "https://open.spotify.com/artist/1wf4fnyhsknDW2jGAIqzfX", mb: "a6efe012-5740-420f-b6d9-ba6f3d6f7598", ry: "oris-jay", sc: "orisjay"}, from: "London, England", styles: "proto, foundational, texture records, vinyl pioneer, deep", conf: 3, since: 2002 },
     { name: "Cyrus", genre: "dubstep", desc: "Producer on Tempa and Deep Medi delivering heavy, rolling 140 with mechanical precision. Grinding metallic textures over relentless sub-bass momentum. A mainstay of the deeper dubstep underground.", genres: "dubstep, 140", links: { sc: "cyrusrtp", dc: "264437-Cyrus-4", sp: "https://open.spotify.com/artist/5ntvgaFmaJr8rNJHOZMpNH", mb: "67b51aa4-a2b2-4806-85e2-4735f9dc80c4", ry: "cyrus-f4", ig: "cyrusrtp"}, from: "England", styles: "heavy, rolling, mechanical, metallic, grinding", conf: 3, since: 2007 },
     { name: "Horsepower Productions", genre: "dubstep", desc: "Trio on Tempa who bridged UK garage and dubstep. Dark instrumental garage with swung rhythms and cavernous bass. Gorgon Sound and To The Rescue are proto-dubstep blueprints.", genres: "dark garage, proto-dubstep, UK garage", links: {dc: "73949-Horsepower-Productions", sp: "https://open.spotify.com/artist/2Su6RvkvrMNSvEh9ccMWD5", yt: "https://music.youtube.com/channel/UCHWIzH-Ru5pPhOOmGCiY3dQ", mb: "128e0f34-8eb9-4ead-b569-c3dbd89566bc", ry: "horsepower-productions", bc: "horsepowerproductions", sc: "horsepowerproductionsofficial", ig: "horsepowerproductions"}, from: "South London, England", styles: "swung, cavernous, instrumental, tempa, blueprint", conf: 3, since: 1997 },
@@ -815,7 +818,7 @@ const ICONS = {
     sp: `<svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>`,
     dc: `<svg viewBox="0 0 24 24"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.078 4.8h2.172c3.733 0 6.078 2.86 6.078 7.2s-2.345 7.2-6.078 7.2h-2.172V4.8zm2.172 12.6c2.494 0 3.878-2.094 3.878-5.4s-1.384-5.4-3.878-5.4h-.372v10.8h.372z"/></svg>`,
     mb: `<svg viewBox="0 0 24 24"><path d="M0 1.418v21.164h24V1.418zm1.2 1.2h21.6v18.764H1.2zM4.39 5.478a2.71 2.71 0 00-1.905.816v-.676H1.4v8.624h1.2V9.67a1.89 1.89 0 011.623-1.923A1.552 1.552 0 015.91 9.42v4.822h1.2V9.22a2.553 2.553 0 00-2.72-3.742zm8.063 0c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624h5.76v-.7c0-2.12-1.362-3.804-3.38-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484H9.97c.1-1.5.99-2.484 2.38-2.484zM19.6 5.478c-2.238 0-3.6 1.705-3.6 3.824v.68c0 2.12 1.362 3.824 3.6 3.824 1.457 0 2.557-.713 3.12-1.888l-1.08-.48c-.37.789-1.09 1.168-2.04 1.168-1.478 0-2.28-1.104-2.38-2.624H22.8v-.7c-.06-2.06-1.362-3.804-3.2-3.804zm-.1 1.2c1.29 0 2.18.984 2.28 2.484h-4.66c.1-1.5.99-2.484 2.38-2.484z"/></svg>`,
-    ry: `<svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zm2 2v14h14V5zm2 2h4.5c1.38 0 2.5 1.12 2.5 2.5 0 .97-.56 1.81-1.37 2.22L15 14.5 12.5 19h-2l2.5-4.5H9V19H7z"/></svg>`,
+    ry: `<svg viewBox="0 0 24 24"><defs><linearGradient id="rymGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" /><stop offset="50%" style="stop-color:#9C27B0;stop-opacity:1" /><stop offset="100%" style="stop-color:#673AB7;stop-opacity:1" /></linearGradient></defs><path d="M3 3h18v18H3zm2 2v14h14V5zm2 2h4.5c1.38 0 2.5 1.12 2.5 2.5 0 .97-.56 1.81-1.37 2.22L15 14.5 12.5 19h-2l2.5-4.5H9V19H7z"/></svg>`,
 };
 
 function buildLinks(act) {
@@ -884,7 +887,7 @@ function renderCard(act) {
         <div class="act-bottom">
             <div class="links">${linksHtml}</div>
             <div class="act-meta">
-                ${[act.from ? `<span class="act-field"><span class="act-label">from:</span> ${act.from}</span>` : '', act.since ? `<span class="act-field"><span class="act-label">since:</span> ${act.since}</span>` : '', act.releases ? `<span class="act-field"><span class="act-label">releases:</span> ${act.releases}</span>` : ''].filter(Boolean).join('<span class="meta-sep"> · </span>')}
+                ${[act.from ? `<span class="act-field"><span class="act-label">from:</span> ${act.from.replace(/,\s+/g, ', ').replace(/\s+,/g, ',').trim()}</span>` : '', act.since ? `<span class="act-field"><span class="act-label">since:</span> ${act.since}</span>` : '', act.releases ? `<span class="act-field"><span class="act-label">releases:</span> ${act.releases}</span>` : ''].filter(Boolean).join('<span class="meta-sep"> · </span>')}
                 <span class="act-field"><span class="act-label">info:</span> ${conf}</span>
             </div>
         </div>
