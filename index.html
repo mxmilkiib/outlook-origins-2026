@@ -160,7 +160,7 @@
         .header-info .subtitle a:hover { border-bottom-color: transparent; }
 
         /* ── COUNTDOWN ── */
-        .countdown { display: flex; gap: 0.8rem; font-variant-numeric: tabular-nums; align-self: flex-end; }
+        .countdown { display: flex; gap: 0.8rem; font-variant-numeric: tabular-nums; margin-top: 0.5rem; }
         .countdown-unit { text-align: center; }
         .countdown-unit .num { font-size: 1.1rem; font-weight: 700; color: var(--accent); line-height: 1; }
         .countdown-unit .lbl { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
@@ -257,11 +257,11 @@
         .act-card.corner-b { border-radius: 0 6px 0 6px; }
         .act-card .act-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.2rem; }
         .act-card h3 { font-size: 1rem; margin: 0; flex-shrink: 0; }
-        .act-card .act-taxonomy { text-align: right; flex-shrink: 0; min-width: 0; max-width: 75%; overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
+        .act-card .act-taxonomy { text-align: right; flex-shrink: 1; min-width: 0; max-width: 75%; overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; overflow: hidden; }
         .act-card .act-field { font-size: 0.7rem; color: var(--text-dim); line-height: 1.5; }
         .act-card .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
-        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; }
-        .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: pretty; margin-top: 2px; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
+        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; white-space: nowrap; }
+        .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: pretty; margin-top: 2px; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; }
         .act-card .tag-major { font-weight: 600; color: var(--text); opacity: 0.7; }
         .act-card .tag-minor { color: var(--text-dim); }
         .act-card .tag-sep { color: var(--text-dim); opacity: 0.3; }
@@ -381,9 +381,9 @@
                     <h1><span>Outlook</span> Origins 2026</h1>
                     <p class="subtitle">The Garden, Tisno, Croatia &mdash; 23&ndash;27 July 2026 &mdash; <a href="https://www.outlookorigins.com/" target="_blank">outlookorigins.com</a> &mdash; <a href="poster.jpg" target="_blank">lineup poster</a></p>
                     <p class="ai-disclaimer">AI-generated guide. Links and details may contain errors.</p>
+                    <div class="countdown" id="countdown"></div>
                 </div>
             </div>
-            <div class="countdown" id="countdown"></div>
         </div>
         <div class="header-right">
             <div class="control-group">
