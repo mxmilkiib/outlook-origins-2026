@@ -102,16 +102,16 @@
         [data-theme="poster"] {
             --bg: #0a0a0a; --card: #1a1a1a; --card-hover: #242424; --text: #f0e8d0;
             --text-dim: #a08860; --accent: #E01953; --border: #3a3a3a; --link-bg: #282828; --link-hover: #E8A42F; --link-hover-text: #fff;
-            --dnb: #E01953; --jungle: #E8A42F; --dubstep: #E01953; --grime: #E8A42F; --soundsystem: #E01953;
-            --techno: #E01953; --breaks: #E8A42F; --club: #E01953; --ukg: #E8A42F;
-            --jazz: #E01953; --afro: #E8A42F; --unknown: #888;
+            --dnb: #FF6B00; --jungle: #E01953; --dubstep: #D91E63; --grime: #FFA500; --soundsystem: #FF1493;
+            --techno: #FF8C00; --breaks: #E8A42F; --club: #FF007F; --ukg: #FFB700;
+            --jazz: #FF4500; --afro: #E01953; --unknown: #888;
         }
         [data-theme="origins"] {
-            --bg: #fef5f0; --card: #fff; --card-hover: #fef9f6; --text: #2a1a28;
-            --text-dim: #8a6a7a; --accent: #b85090; --border: #e8d0dc; --link-bg: #fde8e4; --link-hover: #b85090; --link-hover-text: #fff;
-            --dnb: #d88860; --jungle: #a888c8; --dubstep: #9868b8; --grime: #d88870; --soundsystem: #a878b8;
-            --techno: #8878c8; --breaks: #d89060; --club: #b868a8; --ukg: #9888c0;
-            --jazz: #c88850; --afro: #a888b8; --unknown: #988888;
+            --bg: #f8f0f2; --card: #fff; --card-hover: #fef9f6; --text: #2a1a28;
+            --text-dim: #8a6a7a; --accent: #820C6D; --border: #e8d0dc; --link-bg: #fde8e4; --link-hover: #820C6D; --link-hover-text: #fff;
+            --dnb: #DCB5AD; --jungle: #4E24C2; --dubstep: #820C6D; --grime: #DCB5AD; --soundsystem: #4E24C2;
+            --techno: #820C6D; --breaks: #DCB5AD; --club: #4E24C2; --ukg: #820C6D;
+            --jazz: #DCB5AD; --afro: #4E24C2; --unknown: #a88888;
         }
         [data-theme="hatched"] .act-card {
             background: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px), var(--card);
@@ -243,7 +243,7 @@
         .act-card .act-taxonomy { text-align: right; flex-shrink: 0; min-width: 0; max-width: 75%; overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
         .act-card .act-field { font-size: 0.7rem; color: var(--text-dim); line-height: 1.5; }
         .act-card .act-label { font-weight: 600; color: var(--text); opacity: 0.5; text-transform: lowercase; margin-right: 2px; }
-        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #fff; vertical-align: middle; }
+        .act-card .genre-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 1px 5px; border-radius: 3px; display: inline-block; color: #000; vertical-align: middle; }
         .act-card .act-tags { font-size: 0.65rem; line-height: 1.4; text-wrap: pretty; margin-top: 2px; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
         .act-card .tag-major { font-weight: 600; color: var(--text); opacity: 0.7; }
         .act-card .tag-minor { color: var(--text-dim); }
@@ -301,7 +301,7 @@
         .view-list .act-card .act-meta .act-field:nth-child(n+3) { display: none; }
         .view-list .act-card .act-meta .confidence { display: none; }
         .view-list .act-card .act-collab { display: none; }
-        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; width: 280px; justify-content: flex-start; }
+        .view-list .act-card .links { display: flex; flex-wrap: nowrap; gap: 0.2rem; flex-shrink: 0; min-width: 280px; max-width: 280px; justify-content: flex-start; overflow: hidden; }
         .view-list .act-card .links a { font-size: 0.6rem; padding: 1px 4px; }
         .view-list .act-card .links a svg { width: 10px; height: 10px; }
 
